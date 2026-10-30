@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "capabilities": {
+    "cap.carlet.representation": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.scalar-spectrum": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.vector-metrics": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.reed-muller": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.quadratic-rank": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.bent-construction": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.resilience": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.propagation": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.algebraic-immunity": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.symmetry": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.field-power": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.model-review": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.research-triage": {
+      "served_by": "carlet-boolean-research"
+    }
+  }
+}

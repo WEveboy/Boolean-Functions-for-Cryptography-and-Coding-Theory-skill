@@ -1,0 +1,687 @@
+{
+  "representation-normal": {
+    "answer": {
+      "anf_coefficients": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "anf_masks": [
+        3
+      ],
+      "degree": 2,
+      "expression": "x0*x1",
+      "verification": "Möbius变换两次还原原表：True"
+    },
+    "selected_capability": "representation"
+  },
+  "representation-boundary": {
+    "answer": "拒绝运算：n=3要求2^3=8个值，现只有4个。需补全8项真值表或明确纠正n；不能擅自补零或改成n=2。",
+    "selected_capability": "representation"
+  },
+  "scalar-spectrum-normal": {
+    "answer": {
+      "walsh": [
+        2,
+        2,
+        2,
+        -2
+      ],
+      "NL": 1,
+      "parseval_sum": 16,
+      "convention": "W(u)=sum_x (-1)^(f(x)+u·x)，u按整数0..3顺序，未归一化。NL=2-max|W|/2=1；平方和=16=2^(2n)。"
+    },
+    "selected_capability": "scalar-spectrum"
+  },
+  "scalar-spectrum-boundary": {
+    "answer": "不能。LAT可能表示W、W/2、匹配数偏离2^(n-1)，或归一化概率偏差W/2^(n+1)。先索取LAT的精确定义、n及坐标约定；裸数2不能直接视作Walsh系数。",
+    "selected_capability": "scalar-spectrum"
+  },
+  "vector-metrics-normal": {
+    "answer": {
+      "components": {
+        "1": {
+          "walsh": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "nonlinearity": 0,
+          "balanced": true
+        },
+        "2": {
+          "walsh": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "nonlinearity": 0,
+          "balanced": true
+        },
+        "3": {
+          "walsh": [
+            4,
+            0,
+            0,
+            0
+          ],
+          "nonlinearity": 0,
+          "balanced": false
+        }
+      },
+      "vector_balanced": false,
+      "vector_NL": 0,
+      "explanation": "掩码1和2均为x0，各有2个1，NL=0；掩码3恒零，有0个1且不平衡，NL=0。全部非零分量的最小NL为0。"
+    },
+    "selected_capability": "vector-metrics"
+  },
+  "vector-metrics-boundary": {
+    "answer": "不够。m=4有2^4-1=15个非零输出掩码，需检验全部分量b·F。四坐标只覆盖4个掩码。例F=(x0,x0,x0,x0)的各坐标都平衡，但前两坐标之和恒零，因此向量不平衡；n=m时向量平衡等价于置换。",
+    "selected_capability": "vector-metrics"
+  },
+  "reed-muller-normal": {
+    "answer": {
+      "length": 8,
+      "dimension": 4,
+      "minimum_distance": 4,
+      "dual_order": 1,
+      "calculation": "长度2^3=8；维数C(3,0)+C(3,1)=4；最小距离2^(3-1)=4；对偶RM(3-1-1,3)=RM(1,3)，自对偶。"
+    },
+    "selected_capability": "reed-muller"
+  },
+  "reed-muller-boundary": {
+    "answer": {
+      "answer": "最小距离4是两不同码字之间的最小距离；所有向量到码的最大最近距离是覆盖半径，二者定义不同。RM(1,3)实际覆盖半径2。",
+      "independent_verification": "枚举全部256个8位向量和16个仿射码字，max_t min_g d(t,g)=2。"
+    },
+    "selected_capability": "reed-muller"
+  },
+  "quadratic-rank-normal": {
+    "answer": {
+      "polar_rows": [
+        2,
+        1,
+        8,
+        4
+      ],
+      "rank": 4,
+      "predicted_nonzero_amplitude": 4,
+      "predicted_support_size": 16,
+      "actual_support_size": 16,
+      "explanation": "极化矩阵两块[[0,1],[1,0]]，秩r=4；非零幅度2^(4-r/2)=4；支撑2^r=16。已用全谱核对。"
+    },
+    "selected_capability": "quadratic-rank"
+  },
+  "quadratic-rank-boundary": {
+    "answer": "不能，ANF次数为3，极化式不再是双线性型。二次极化谱公式需要deg(f)<=2；可直接计算该8项真值表的Walsh谱。",
+    "selected_capability": "quadratic-rank"
+  },
+  "bent-construction-normal": {
+    "answer": {
+      "NL": 6,
+      "balanced": false,
+      "weight": 6,
+      "walsh": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        -4,
+        4,
+        -4,
+        4,
+        4,
+        -4,
+        -4,
+        4,
+        -4,
+        -4,
+        4
+      ],
+      "explanation": "变量编码z=x+4y，f=x·y。pi为置换，4变量bent，|W|=4，NL=8-2=6；W(0)=4，重量(16-4)/2=6，故不平衡。"
+    },
+    "selected_capability": "bent-construction"
+  },
+  "bent-construction-boundary": {
+    "answer": "不能。pi=[0,0,1,2]非置换（重复0且缺3），不满足MM置换构造前提。对该标准MM形式，bent当且仅当pi置换；工具mm会拒绝输入。",
+    "selected_capability": "bent-construction"
+  },
+  "resilience-normal": {
+    "answer": {
+      "CI_order": 2,
+      "resiliency_order": 2,
+      "NL": 0,
+      "walsh": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      "explanation": "仅重量3的频点u=7有W=8，重量1、2的频点全零且W(0)=0，因此相关免疫2阶、韧性2阶；奇偶函数是线性函数故NL=0。"
+    },
+    "selected_capability": "resilience"
+  },
+  "resilience-boundary": {
+    "answer": "不能。常零函数W(0)=2^n，不平衡，故没有韧性阶数。非零频点全零，可称n阶相关免疫；韧性还要求W(0)=0。",
+    "selected_capability": "resilience"
+  },
+  "propagation-normal": {
+    "answer": {
+      "AC": [
+        4,
+        0,
+        0,
+        0
+      ],
+      "PC_order": 2,
+      "explanation": "AC顺序a=0,1,2,3，AC(0)=4；三个非零方向导数均平衡，AC=0，因此PC(2)，也满足SAC。"
+    },
+    "selected_capability": "propagation"
+  },
+  "propagation-boundary": {
+    "answer": "不能。SAC仅为PC(1)，只检查重量1方向。PC(n)要求所有非零方向的导数平衡。必须检查剩余方向或提供可推出这些条件的证明。",
+    "selected_capability": "propagation"
+  },
+  "algebraic-immunity-normal": {
+    "answer": {
+      "algebraic_immunity": 1,
+      "annihilates": "f",
+      "anf_masks": [
+        0,
+        1
+      ],
+      "explanation": "g=1+x0为非零一次函数，其ANF掩码[0,1]；f*g=x0*(1+x0)=0。零次非零函数仅常1，不能零化非常量f或f+1，故AI不为0，恰为1。"
+    },
+    "selected_capability": "algebraic-immunity"
+  },
+  "algebraic-immunity-boundary": {
+    "answer": "不能使用本包AI工具宣称n=7精确结果：immunity明确仅支持n<=6，且尚未给函数表。若另行独立实现，须先给128项真值表并确认预算；可逐d<=ceil(7/2)=4构造GF(2)评价矩阵求零空间，最高次数单项式数1+7+21+35+35=99，分别在f=1和f=0支撑上求解、核验非零证书并排除更低次数。暴力枚举系数会有2^99个候选，不应无预算直接枚举。本项未计算具体AI。",
+    "selected_capability": "algebraic-immunity"
+  },
+  "symmetry-normal": {
+    "answer": {
+      "symmetric": true,
+      "rotation_symmetric": true,
+      "layer_weights": [
+        0,
+        3,
+        0,
+        1
+      ],
+      "layer_sizes": [
+        1,
+        3,
+        3,
+        1
+      ],
+      "explanation": "对任意坐标置换不变，完全对称且旋转对称。重量0,1,2,3层值分别0,1,0,1；层大小[1,3,3,1]，层内1数[0,3,0,1]。"
+    },
+    "selected_capability": "symmetry"
+  },
+  "symmetry-boundary": {
+    "answer": {
+      "answer": "不必然。必须要求g|E非零；全域非零不足以作为受限证书。可独立构造全域AI=2但重量层上AI>2的反例。本包不提供受限AI工具；以下是独立GF(2)评价矩阵秩核验。",
+      "counterexample": {
+        "n": 8,
+        "seed": 0,
+        "table": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "restricted_domain": "wt(x)=4",
+        "degree2_E_rank": 28,
+        "degree2_side_ranks": [
+          28,
+          28
+        ],
+        "degree1_global_side_ranks": [
+          9,
+          9
+        ],
+        "global_annihilator": "x0*(x0+x1+...+x7) = x0 + sum_(i=1..7) x0*xi",
+        "explanation": "全域无非零一次零化子，给定二次零化子全域非零，故全域AI=2。受限域次数<=2的评价空间在两侧均无额外核，因此无在E非零的次数<=2零化子，受限AI>2。"
+      }
+    },
+    "selected_capability": "symmetry"
+  },
+  "field-power-normal": {
+    "answer": {
+      "table": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        2
+      ],
+      "delta": 2,
+      "permutation": true,
+      "DDT": [
+        [
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          0,
+          2,
+          2,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          2,
+          2,
+          0
+        ]
+      ],
+      "explanation": "多项式基以整数位表示X的系数，模X^3+X+1=11。逐a!=0、b全算DDT最大值2；8个输出互异，是置换。指数3与7互素也核对置换条件。"
+    },
+    "selected_capability": "field-power"
+  },
+  "field-power-boundary": {
+    "answer": "不合法：在F2上X^3+1=(X+1)(X^2+X+1)，因有根1而可约。商环有零因子，不能作GF(8)；需替换为三次不可约多项式，例如X^3+X+1，并固定基与整数编码。",
+    "selected_capability": "field-power"
+  },
+  "model-review-normal": {
+    "answer": {
+      "verdict": "只给delta=4不足以判断阈值实现侧信道安全；仅在8位输入且指标可信时，最大单个差分概率为4/256。未作TI安全证明。",
+      "assumption_review": [
+        {
+          "假设": "函数及差分指标精确",
+          "攻击": "差分分析",
+          "函数条件": "固定8->8位S盒，delta=4",
+          "待验证证据": "真值表、位序、全DDT或可复算证书、轮结构；该指标不能代替泄漏分析"
+        },
+        {
+          "假设": "共享重构正确",
+          "攻击": "错误实现/功能破坏",
+          "函数条件": "输出各共享异或等于原函数输出",
+          "待验证证据": "共享方案、共享数、电路与逐输入正确性证明"
+        },
+        {
+          "假设": "规定探测阶数与毛刺模型",
+          "攻击": "探测与毛刺侧信道",
+          "函数条件": "相应阶数non-completeness，单个分量不依赖全部输入共享",
+          "待验证证据": "门级依赖、电路分解、寄存器边界、毛刺扩展探测分析"
+        },
+        {
+          "假设": "输入共享均匀且随机性符合模型",
+          "攻击": "共享偏置与多次观察",
+          "函数条件": "uniformity及跨阶段组合条件",
+          "待验证证据": "共享分布、随机数来源/独立性/刷新方案、均匀性证明"
+        },
+        {
+          "假设": "实际硬件符合泄漏模型",
+          "攻击": "功耗、电磁和组合泄漏",
+          "函数条件": "函数指标本身不能担保",
+          "待验证证据": "目标平台、综合后网表、时序及泄漏评估，说明安全阶数与组合范围"
+        }
+      ]
+    },
+    "selected_capability": "model-review"
+  },
+  "model-review-boundary": {
+    "answer": "不能。S盒数学指标不包含共享分布、门级依赖、寄存器、随机性和毛刺泄漏模型。需在明确攻击阶数和硬件模型下验证正确性、non-completeness、uniformity及适用的组合条件；仅凭delta或NL不能宣布毛刺环境下一定安全。",
+    "selected_capability": "model-review"
+  },
+  "research-triage-normal": {
+    "answer": {
+      "historical_problem": "按能力卡来源，Carlet 2021 §13.6问题16讨论偶数维n>=8的APN置换。这里只采用出版时命题，不声称2026年当前仍开放。",
+      "finite_plan": [
+        "先定位原书节号、问题编号和量词，并查当前一手论文、作者勘误及后续引文，核对是否已解决或参数范围已变化。",
+        "设n=8，固定GF(256)多项式基（如不可约模0x11B），候选仅为x^d，1<=d<=254且gcd(d,255)=1；声明这是有限单项式候选域，不代表所有8位置换。明确运行时间/候选数预算并保存候选清单。",
+        "逐候选生成256项表、检验输出互异；对每个a=1..255和全部x统计DDT并求delta；出现某计数>2即可将该候选淘汰。完成者核每行和256，独立重算候选证书，记录表、域、指数、脚本版本和哈希。",
+        "若找到delta=2且置换的表，可声称存在该8位APN置换（有限完整证书），但新颖性需单独查文献并指定EA/CCZ口径，与已知例比较；谱一致不能当等价证书。",
+        "若全部候选失败，仅能排除上述有限幂函数候选集；超预算者标未算，不能声称不存在任意8位APN置换。若要声称无限族，必须提供对所有参数适用的证明。"
+      ],
+      "execution_status": "本项交付计划，未执行n=8搜索，未核查当前文献；不得据此宣称发现、无解、当前开放或新颖性。"
+    },
+    "selected_capability": "research-triage"
+  },
+  "research-triage-boundary": {
+    "answer": "不能。2021年第13章只能支持出版时开放状态。需实时查截至目标日期的一手论文、后续引用、作者勘误或官方更新，核对问题的精确参数与量词；未查前标“出版时开放、当前状态未核实”。",
+    "selected_capability": "research-triage"
+  },
+  "negative_triggers": {
+    "生日祝福": {
+      "invoke_skill": false,
+      "reason": "与布尔函数、向量密码函数和本书能力域无关，不加载该技能。"
+    },
+    "旅游安排": {
+      "invoke_skill": false,
+      "reason": "与布尔函数、向量密码函数和本书能力域无关，不加载该技能。"
+    },
+    "网页按钮颜色": {
+      "invoke_skill": false,
+      "reason": "与布尔函数、向量密码函数和本书能力域无关，不加载该技能。"
+    }
+  }
+}

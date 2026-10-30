@@ -1,0 +1,47 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "references\\capabilities\\algebraic-immunity.md": "61bd6f0160f7d700b98ce17b5b1dbe2aa61da4d11621666526094a0948f9078a",
+    "references\\capabilities\\bent-construction.md": "7431cdb2564fac75b5cf1061ab5600034ad6bb570a76dacde8b0cb7784e0c4f6",
+    "references\\capabilities\\field-power.md": "1311e1c659b7090eeed9fc3680f0ba4515233629359365ed04f76d51d1d04b37",
+    "references\\capabilities\\model-review.md": "b2f6bfa76c3d2cae8136cb327aae7a2202f128563240e98f9c3bead942712d92",
+    "references\\capabilities\\propagation.md": "16c1f2110b74cb59ab04e2dc7df0c7214e01697a33986b67043be101d2599f1a",
+    "references\\capabilities\\quadratic-rank.md": "4cb0d173f05f997adfc258631b3d99d27c23508ccb647d423ce90056a95dca39",
+    "references\\capabilities\\reed-muller.md": "e416a0bb8ba855ac5c2c6b906466c833917ec428951ae78005022dab5b4025fd",
+    "references\\capabilities\\representation.md": "27bda0a6563c833224ec3f8de7be468e65bea1db1393a8ac59a078c99b5cf3be",
+    "references\\capabilities\\research-triage.md": "d5d32e73d8c5cfc741dc4875be96ec4e22e86e352f0074ce177256c9bcc4f8d5",
+    "references\\capabilities\\resilience.md": "4100b9c787bc90866620f22bdfaa90dc551eca6b30893af811eb94c9de874509",
+    "references\\capabilities\\scalar-spectrum.md": "8e242b141e72b13a0d3c47e848ec7d2d0aa55eb27f6f05934a9ad5d7b452f598",
+    "references\\capabilities\\symmetry.md": "159c4baada0ab73e3019c9ebb3b1fca8c50378a77b8c849ff4627b53faf5fd57",
+    "references\\capabilities\\vector-metrics.md": "a3ed5c4576b2f7b8f0d091cb38095aeef5525f5b9fcb016316aa48239c9acb0d",
+    "references\\capability-index.md": "4d956534b120a8da528272fb0698bc6fd1e2c378c4464c78b3f4360693b882f5",
+    "references\\cheatsheet.md": "2e855157e595e080e85930602a85c97b4c801882d6d16f8536067eac6100fd4e",
+    "references\\glossary.md": "5d8fa540a5bb7ed1ea142a99dadccfb318f15ea41c36a43ba6bc2231dd44e138",
+    "references\\overview.md": "1fbef2fdacee7c7061a44e57324f3fc7d0f6c05733b31fdc5eaf4035f6185f9e",
+    "resources\\examples.json": "99b4057962118bef6d5e982f5cfe3ba7b34dcf4d8d97a0e8e8fa3042bd06265e",
+    "resources\\formula-audit.md": "24f80d5167c97f72bc6152a68a4c91f72d6e1a4baf834f70bcc9ac64f709ebda",
+    "resources\\research_core.py": "82e25191bfe7a38b8ead4a251b1eabfa2ce07ab51e6e541c30bea1ad4d8e59e5",
+    "resources\\usage.md": "f4f03fba166655fe60f533677889ae133cb2a7f9d34b73cf4a72f65bc9de158a",
+    "SKILL.md": "9ce64873a989e0a57cb9a1d99940a28a9433ac39d32e979669461be2297ab4f9"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.carlet-boolean-research",
+  "bundle_sha256": "074fb149b11b3193a97ce414e2a753bc18a233650721e7ec1eaa16e1fdb2519d",
+  "variant": "single",
+  "run_id": "run-20261030-145738-e6ae7f",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 2,
+    "promoted_count": 0,
+    "capability_count": 13,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 0 个晋级 Skill，共 1 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

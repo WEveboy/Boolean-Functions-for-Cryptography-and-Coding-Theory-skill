@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "representation",
+    "task": "T01",
+    "location": "§2.1–2.2 pp.27–51"
+  },
+  {
+    "slug": "scalar-spectrum",
+    "task": "T02",
+    "location": "§2.3 pp.52–73；§3.1 pp.76–111"
+  },
+  {
+    "slug": "vector-metrics",
+    "task": "T03/T11",
+    "location": "§3.2–3.4 pp.112–141；§11.3 pp.371–393"
+  },
+  {
+    "slug": "reed-muller",
+    "task": "T04",
+    "location": "第4章 pp.151–163"
+  },
+  {
+    "slug": "quadratic-rank",
+    "task": "T05",
+    "location": "§5.2 pp.170–179"
+  },
+  {
+    "slug": "bent-construction",
+    "task": "T06",
+    "location": "§6.1–6.2 pp.190–265"
+  },
+  {
+    "slug": "resilience",
+    "task": "T07",
+    "location": "第7章 pp.284–317；§3.1"
+  },
+  {
+    "slug": "propagation",
+    "task": "T08",
+    "location": "第8章 pp.318–320；§2.3 p.62"
+  },
+  {
+    "slug": "algebraic-immunity",
+    "task": "T09",
+    "location": "§3.1 p.92；第9章 pp.321–351"
+  },
+  {
+    "slug": "symmetry",
+    "task": "T10/T12",
+    "location": "第10章 pp.352–368；§12.2 pp.453–467"
+  },
+  {
+    "slug": "field-power",
+    "task": "T14/T11",
+    "location": "§2.2.2 pp.41–46；§11.3–11.5 pp.371–411；第14章 pp.480–497"
+  },
+  {
+    "slug": "model-review",
+    "task": "T12",
+    "location": "第3章 pp.76–150；第12章 pp.425–474"
+  },
+  {
+    "slug": "research-triage",
+    "task": "T13",
+    "location": "第13章 pp.475–479"
+  }
+]

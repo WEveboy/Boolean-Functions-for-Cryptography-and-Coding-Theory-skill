@@ -1,0 +1,8 @@
+tmp/
+output/
+__pycache__/
+*.pyc
+*.pdf
+.venv/
+books/**/.cangjie/runs/
+books/**/.cangjie/snapshots/

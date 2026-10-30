@@ -1,0 +1,567 @@
+schema_version: 1
+bundle_id: bundle.carlet-boolean-research
+book:
+  title: Boolean Functions for Cryptography and Coding Theory
+  author: Claude Carlet
+  source_pack: carlet-2021
+  baseline_tag: v0.1.0
+entry:
+  name: carlet-boolean-research
+  description: 基于Claude Carlet专著的布尔函数与向量函数研究：ANF、Walsh、RM、bent、APN、韧性、传播和代数免疫；提供有限真值表精确核验及来源边界。适用于构造分析、条件核对和研究规划，不证明系统安全或自动完成分类。
+  core_principles:
+  - 先固定n、m、真值表位序和域模型；按意图读一张能力卡。
+  - 区分B原书、D独立实现、H猜想；有限全算不冒充无限族证明。
+  - 向量性质检查所有非零分量；置换、APN、AB和平衡各自核验。
+  - 命令和预算见resources/usage.md；结果写用户工作目录。
+  - 第13章仅表示出版时状态；当前开放性和新颖性另查一手文献。
+  out_of_scope:
+  - 一般译码、完整EA/CCZ分类、系统安全证明；未提供的BCT/DLCT/FAI算法。
+  stop_conditions:
+  - 缺规格时先补齐；超预算或定理前提不满足时报告未算/未证。
+router_entry:
+  name: carlet-boolean-research-router
+  description: 基于Claude Carlet专著的布尔函数与向量函数研究：ANF、Walsh、RM、bent、APN、韧性、传播和代数免疫；提供有限真值表精确核验及来源边界。适用于构造分析、条件核对和研究规划，不证明系统安全或自动完成分类。
+promotion_budget: 2
+capabilities:
+- capability_id: cap.carlet.representation
+  revision: 1
+  status: active
+  slug: representation
+  title: 表示、位序与ANF
+  importance: critical
+  importance_rationale: 'T01: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 把函数真值表转成唯一平方自由ANF，明确等价关系及不变量。
+  intents:
+  - 表示、位序与ANF
+  keywords:
+  - 真值表
+  - ANF
+  - 位序
+  - EA
+  - CCZ
+  - representation
+  also_read: []
+  card: cards/representation.md
+  frontmatter:
+    description: 真值表、ANF、位序、EA、CCZ、representation；缺位序或域基不能比较两份字符串。CCZ图等价不能直接推出代数次数相同。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §2.1–2.2 pp.27–51
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.scalar-spectrum
+  revision: 1
+  status: active
+  slug: scalar-spectrum
+  title: Walsh谱与非线性度
+  importance: critical
+  importance_rationale: 'T02: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 用未归一化Walsh谱计算到全部仿射函数的距离。
+  intents:
+  - Walsh谱与非线性度
+  keywords:
+  - Walsh
+  - 非线性度
+  - 最近仿射函数
+  - Parseval
+  - spectrum
+  also_read:
+  - cap.carlet.representation
+  card: cards/scalar-spectrum.md
+  frontmatter:
+    description: Walsh、非线性度、最近仿射函数、Parseval、spectrum；LAT可能指Walsh、半Walsh或偏差，必须写归一化定义；不能把高NL当系统安全证明。高阶距离读reed-muller。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §2.3 pp.52–73；§3.1 pp.76–111
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.vector-metrics
+  revision: 1
+  status: active
+  slug: vector-metrics
+  title: 全部分量、DDT与S盒指标
+  importance: critical
+  importance_rationale: 'T03/T11: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 检查每个非零输出掩码，差分均匀度不包含零输入差分。
+  intents:
+  - 全部分量、DDT与S盒指标
+  keywords:
+  - S盒
+  - DDT
+  - 向量非线性度
+  - APN
+  - AB
+  - 分量
+  - permutation
+  also_read:
+  - cap.carlet.representation
+  card: cards/vector-metrics.md
+  frontmatter:
+    description: S盒、DDT、向量非线性度、APN、AB、分量、permutation；APN只说明delta=2，不自动说明置换或最佳非线性度。工具不实现BCT、DLCT及完整CCZ分类。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §3.2–3.4 pp.112–141；§11.3 pp.371–393
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.reed-muller
+  revision: 1
+  status: active
+  slug: reed-muller
+  title: Reed–Muller距离与码参数
+  importance: high
+  importance_rationale: 'T04: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 把次数约束转为码空间，区分最小距离与覆盖半径。
+  intents:
+  - Reed–Muller距离与码参数
+  keywords:
+  - RM码
+  - Reed-Muller
+  - 高阶非线性度
+  - 覆盖半径
+  - 函数生成码
+  also_read:
+  - cap.carlet.representation
+  card: cards/reed-muller.md
+  frontmatter:
+    description: RM码、Reed-Muller、高阶非线性度、覆盖半径、函数生成码；码最小距离、函数到码的距离和覆盖半径是不同问题。自动计算工具只提供RM参数，不提供一般高阶距离或通用译码器。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: 第4章 pp.151–163
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.quadratic-rank
+  revision: 1
+  status: active
+  slug: quadratic-rank
+  title: 二次极化秩与谱支撑
+  importance: high
+  importance_rationale: 'T05: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 次数至多2才可用极化双线性型的秩预测谱幅度和支撑。
+  intents:
+  - 二次极化秩与谱支撑
+  keywords:
+  - 二次型
+  - polar rank
+  - 极化
+  - 导数核
+  - quadratic
+  also_read:
+  - cap.carlet.representation
+  card: cards/quadratic-rank.md
+  frontmatter:
+    description: 二次型、polar rank、极化、导数核、quadratic；仿射项移动谱支撑但不改极化秩。高次数函数不能套用二次秩公式。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §5.2 pp.170–179
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.bent-construction
+  revision: 1
+  status: active
+  slug: bent-construction
+  title: 构造并核验bent与plateaued
+  importance: critical
+  importance_rationale: 'T06: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 在明确偶数维和置换前提下构造Maiorana–McFarland函数。
+  intents:
+  - 构造并核验bent与plateaued
+  keywords:
+  - bent
+  - plateaued
+  - Maiorana
+  - McFarland
+  - MM构造
+  - 对偶
+  also_read:
+  - cap.carlet.representation
+  card: cards/bent-construction.md
+  frontmatter:
+    description: bent、plateaued、Maiorana、McFarland、MM构造、对偶；pi非置换时不能引用该充分条件。bent不能直接满足平衡要求；向量bent要求m<=n/2。本工具不实现所有bent族。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §6.1–6.2 pp.190–265
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.resilience
+  revision: 1
+  status: active
+  slug: resilience
+  title: 相关免疫与韧性阶数
+  importance: high
+  importance_rationale: 'T07: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 低重量非零频点为零刻画相关免疫，韧性还要求零频为零。
+  intents:
+  - 相关免疫与韧性阶数
+  keywords:
+  - 相关免疫
+  - resilient
+  - 韧性
+  - Siegenthaler
+  - correlation immunity
+  also_read:
+  - cap.carlet.representation
+  card: cards/resilience.md
+  frontmatter:
+    description: 相关免疫、resilient、韧性、Siegenthaler、correlation immunity；常函数的相关免疫可达n，但不平衡；高韧性不意味着高NL。不能对每个坐标检查后推广全部分量。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: 第7章 pp.284–317；§3.1
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.propagation
+  revision: 1
+  status: active
+  slug: propagation
+  title: 自相关、SAC与传播准则
+  importance: high
+  importance_rationale: 'T08: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 用导数平衡核验传播准则，并区分重量1方向与全部方向。
+  intents:
+  - 自相关、SAC与传播准则
+  keywords:
+  - SAC
+  - PC
+  - 传播
+  - 自相关
+  - autocorrelation
+  - avalanche
+  also_read:
+  - cap.carlet.representation
+  card: cards/propagation.md
+  frontmatter:
+    description: SAC、PC、传播、自相关、autocorrelation、avalanche；SAC不要求多位方向平衡，不能自动推PC(n)。EPC和有阶数PC需按原书限制导数变量另立测试，本程序未实现。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: 第8章 pp.318–320；§2.3 p.62
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.algebraic-immunity
+  revision: 1
+  status: active
+  slug: algebraic-immunity
+  title: 代数免疫与零化子证书
+  importance: high
+  importance_rationale: 'T09: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 在f或f+1的支撑上解齐次线性系统，求非零低次零化子。
+  intents:
+  - 代数免疫与零化子证书
+  keywords:
+  - AI
+  - 代数免疫
+  - annihilator
+  - 零化子
+  - 代数攻击
+  also_read:
+  - cap.carlet.representation
+  card: cards/algebraic-immunity.md
+  frontmatter:
+    description: AI、代数免疫、annihilator、零化子、代数攻击；g必须非零；高代数次数不等于高AI，最优AI也不证明抵抗快速代数攻击。FAI和向量AI未自动实现。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §3.1 p.92；第9章 pp.321–351
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.symmetry
+  revision: 1
+  status: active
+  slug: symmetry
+  title: 对称族与受限输入核查
+  importance: high
+  importance_rationale: 'T10/T12: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 逐重量层和旋转轨道核查性质，完整域与受限域参数分开报告。
+  intents:
+  - 对称族与受限输入核查
+  keywords:
+  - 对称
+  - 旋转对称
+  - symmetric
+  - restricted input
+  - 固定重量
+  - FHE
+  also_read:
+  - cap.carlet.representation
+  card: cards/symmetry.md
+  frontmatter:
+    description: 对称、旋转对称、symmetric、restricted input、固定重量、FHE；旋转对称不必完全对称。受限域的等价关系、平衡及次数需另定义；本程序不计算FHE安全或受限域AI。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: 第10章 pp.352–368；§12.2 pp.453–467
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.field-power
+  revision: 1
+  status: active
+  slug: field-power
+  title: 有限域模型与APN幂函数实验
+  importance: critical
+  importance_rationale: 'T14/T11: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 先固定不可约模多项式再生成幂函数，有限实验与族定理分开。
+  intents:
+  - 有限域模型与APN幂函数实验
+  keywords:
+  - 有限域
+  - Gold
+  - APN幂函数
+  - trace
+  - 不可约
+  - finite field
+  also_read:
+  - cap.carlet.representation
+  card: cards/field-power.md
+  frontmatter:
+    description: 有限域、Gold、APN幂函数、trace、不可约、finite field；不同模多项式下整数标签不是同一个元素。不可约不等于本原；本工具没有迹/对偶基计算器，不把8维以下全算当无限族证明。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §2.2.2 pp.41–46；§11.3–11.5 pp.371–411；第14章 pp.480–497
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.model-review
+  revision: 1
+  status: active
+  slug: model-review
+  title: 攻击模型与实现假设审查
+  importance: high
+  importance_rationale: 'T12: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 把攻击者可观察量和实现条件写清，再选择相关函数指标。
+  intents:
+  - 攻击模型与实现假设审查
+  keywords:
+  - 阈值实现
+  - masking
+  - 物理攻击
+  - TI
+  - FHE
+  - local PRG
+  - Gowers
+  also_read:
+  - cap.carlet.representation
+  card: cards/model-review.md
+  frontmatter:
+    description: 阈值实现、masking、物理攻击、TI、FHE、local PRG、Gowers；数学函数的好指标不能替代实现泄漏、毛刺或系统攻击分析。FHE、TI、局部PRG和Gowers只交付模型审查与参考定位，不生成密码产品。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: 第3章 pp.76–150；第12章 pp.425–474
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.research-triage
+  revision: 1
+  status: active
+  slug: research-triage
+  title: 历史开放问题与证据分级
+  importance: high
+  importance_rationale: 'T13: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 把出版时开放问题转成可检验的小任务，并把当前状态留给文献核查。
+  intents:
+  - 历史开放问题与证据分级
+  keywords:
+  - 开放问题
+  - 研究计划
+  - big APN
+  - novelty
+  - 新颖性
+  - open questions
+  also_read:
+  - cap.carlet.representation
+  card: cards/research-triage.md
+  frontmatter:
+    description: 开放问题、研究计划、big APN、novelty、新颖性、open questions；不能宣称原书所有开放问题在2026年仍开放；不能由小维样本推导新无限族或完整分类。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: 第13章 pp.475–479
+  resources:
+  - resources/research_core.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。

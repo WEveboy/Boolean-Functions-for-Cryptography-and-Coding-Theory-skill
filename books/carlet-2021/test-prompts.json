@@ -1,0 +1,102 @@
+{
+  "skill": "carlet-boolean-research",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "trigger-representation",
+      "type": "should_trigger",
+      "prompt": "输入n=2，x_i是整数x的第i位，表[0,0,0,1]，求ANF掩码与次数。",
+      "expected_behavior": "route to representation"
+    },
+    {
+      "id": "trigger-scalar-spectrum",
+      "type": "should_trigger",
+      "prompt": "n=2，表[0,0,0,1]，给完整未归一化Walsh谱、NL和Parseval平方和。",
+      "expected_behavior": "route to scalar-spectrum"
+    },
+    {
+      "id": "trigger-vector-metrics",
+      "type": "should_trigger",
+      "prompt": "n=m=2，表[0,3,0,3]，求全部非零分量的平衡性与向量NL。",
+      "expected_behavior": "route to vector-metrics"
+    },
+    {
+      "id": "trigger-reed-muller",
+      "type": "should_trigger",
+      "prompt": "求RM(1,3)长度、维数、最小距离、对偶阶数。",
+      "expected_behavior": "route to reed-muller"
+    },
+    {
+      "id": "trigger-quadratic-rank",
+      "type": "should_trigger",
+      "prompt": "n=4，f=x0*x1 XOR x2*x3，给极化秩和非零谱幅度、支撑大小。",
+      "expected_behavior": "route to quadratic-rank"
+    },
+    {
+      "id": "trigger-bent-construction",
+      "type": "should_trigger",
+      "prompt": "k=2，pi=[0,1,2,3]，g=[0,0,0,0]，求MM构造的NL、平衡性。",
+      "expected_behavior": "route to bent-construction"
+    },
+    {
+      "id": "trigger-resilience",
+      "type": "should_trigger",
+      "prompt": "n=3，f=x0 XOR x1 XOR x2，给相关免疫阶数、韧性阶数和NL。",
+      "expected_behavior": "route to resilience"
+    },
+    {
+      "id": "trigger-propagation",
+      "type": "should_trigger",
+      "prompt": "n=2，f=x0*x1，给AC全表和PC阶数。",
+      "expected_behavior": "route to propagation"
+    },
+    {
+      "id": "trigger-algebraic-immunity",
+      "type": "should_trigger",
+      "prompt": "n=2，f=x0，给AI及一个非零零化子的ANF。",
+      "expected_behavior": "route to algebraic-immunity"
+    },
+    {
+      "id": "trigger-symmetry",
+      "type": "should_trigger",
+      "prompt": "n=3，f=输入重量奇偶，给对称性和各重量层大小、层内1数。",
+      "expected_behavior": "route to symmetry"
+    },
+    {
+      "id": "trigger-field-power",
+      "type": "should_trigger",
+      "prompt": "GF(8)模X^3+X+1，F=x^3，求整数顺序0..7真值表、delta和置换性。",
+      "expected_behavior": "route to field-power"
+    },
+    {
+      "id": "trigger-model-review",
+      "type": "should_trigger",
+      "prompt": "只提供“8位S盒delta=4”，目标是阈值实现侧信道安全，请给假设审查表和缺失证据。",
+      "expected_behavior": "route to model-review"
+    },
+    {
+      "id": "trigger-research-triage",
+      "type": "should_trigger",
+      "prompt": "围绕原书§13.6问题16，给一个有限候选搜索计划，写清何种结果可声称以及文献核查义务。",
+      "expected_behavior": "route to research-triage"
+    },
+    {
+      "id": "negative-0",
+      "type": "should_not_trigger",
+      "prompt": "帮我写生日祝福",
+      "expected_behavior": "do not invoke this skill"
+    },
+    {
+      "id": "negative-1",
+      "type": "should_not_trigger",
+      "prompt": "修改这份旅游日程",
+      "expected_behavior": "do not invoke this skill"
+    },
+    {
+      "id": "negative-2",
+      "type": "should_not_trigger",
+      "prompt": "给我的网页按钮改颜色",
+      "expected_behavior": "do not invoke this skill"
+    }
+  ]
+}

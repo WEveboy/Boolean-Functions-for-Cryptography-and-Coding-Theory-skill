@@ -1,0 +1,132 @@
+[
+  {
+    "id": "representation-normal",
+    "capability": "representation",
+    "prompt": "输入n=2，x_i是整数x的第i位，表[0,0,0,1]，求ANF掩码与次数。"
+  },
+  {
+    "id": "representation-boundary",
+    "capability": "representation",
+    "prompt": "输入n=3，但只给表[0,1,0,1]，应如何处理？"
+  },
+  {
+    "id": "scalar-spectrum-normal",
+    "capability": "scalar-spectrum",
+    "prompt": "n=2，表[0,0,0,1]，给完整未归一化Walsh谱、NL和Parseval平方和。"
+  },
+  {
+    "id": "scalar-spectrum-boundary",
+    "capability": "scalar-spectrum",
+    "prompt": "LAT表只写“2”没有归一化定义，能否直接作Walsh系数使用？"
+  },
+  {
+    "id": "vector-metrics-normal",
+    "capability": "vector-metrics",
+    "prompt": "n=m=2，表[0,3,0,3]，求全部非零分量的平衡性与向量NL。"
+  },
+  {
+    "id": "vector-metrics-boundary",
+    "capability": "vector-metrics",
+    "prompt": "某4位S盒只检测了4个坐标函数，都平衡，是否足以判定向量平衡？"
+  },
+  {
+    "id": "reed-muller-normal",
+    "capability": "reed-muller",
+    "prompt": "求RM(1,3)长度、维数、最小距离、对偶阶数。"
+  },
+  {
+    "id": "reed-muller-boundary",
+    "capability": "reed-muller",
+    "prompt": "有人把RM最小距离4解释为所有8位向量到码的最大距离4，指出问题。"
+  },
+  {
+    "id": "quadratic-rank-normal",
+    "capability": "quadratic-rank",
+    "prompt": "n=4，f=x0*x1 XOR x2*x3，给极化秩和非零谱幅度、支撑大小。"
+  },
+  {
+    "id": "quadratic-rank-boundary",
+    "capability": "quadratic-rank",
+    "prompt": "n=3，f=x0*x1*x2，能直接套二次极化谱公式吗？"
+  },
+  {
+    "id": "bent-construction-normal",
+    "capability": "bent-construction",
+    "prompt": "k=2，pi=[0,1,2,3]，g=[0,0,0,0]，求MM构造的NL、平衡性。"
+  },
+  {
+    "id": "bent-construction-boundary",
+    "capability": "bent-construction",
+    "prompt": "k=2，pi=[0,0,1,2]，能引用MM置换构造保证bent吗？"
+  },
+  {
+    "id": "resilience-normal",
+    "capability": "resilience",
+    "prompt": "n=3，f=x0 XOR x1 XOR x2，给相关免疫阶数、韧性阶数和NL。"
+  },
+  {
+    "id": "resilience-boundary",
+    "capability": "resilience",
+    "prompt": "常零函数应称n阶韧性函数吗？"
+  },
+  {
+    "id": "propagation-normal",
+    "capability": "propagation",
+    "prompt": "n=2，f=x0*x1，给AC全表和PC阶数。"
+  },
+  {
+    "id": "propagation-boundary",
+    "capability": "propagation",
+    "prompt": "一个函数满足SAC，是否可不检查就宣布满足PC(n)？"
+  },
+  {
+    "id": "algebraic-immunity-normal",
+    "capability": "algebraic-immunity",
+    "prompt": "n=2，f=x0，给AI及一个非零零化子的ANF。"
+  },
+  {
+    "id": "algebraic-immunity-boundary",
+    "capability": "algebraic-immunity",
+    "prompt": "给n=7函数，能否使用包内AI工具宣称精确结果？若无该工具，也说明精确枚举需预算。"
+  },
+  {
+    "id": "symmetry-normal",
+    "capability": "symmetry",
+    "prompt": "n=3，f=输入重量奇偶，给对称性和各重量层大小、层内1数。"
+  },
+  {
+    "id": "symmetry-boundary",
+    "capability": "symmetry",
+    "prompt": "完整域上AI为2，限制到一个重量层后是否必然AI<=2？说明是否需要区分受限函数非零条件。"
+  },
+  {
+    "id": "field-power-normal",
+    "capability": "field-power",
+    "prompt": "GF(8)模X^3+X+1，F=x^3，求整数顺序0..7真值表、delta和置换性。"
+  },
+  {
+    "id": "field-power-boundary",
+    "capability": "field-power",
+    "prompt": "有人用X^3+1作GF(8)模多项式，请检查是否合法。"
+  },
+  {
+    "id": "model-review-normal",
+    "capability": "model-review",
+    "prompt": "只提供“8位S盒delta=4”，目标是阈值实现侧信道安全，请给假设审查表和缺失证据。"
+  },
+  {
+    "id": "model-review-boundary",
+    "capability": "model-review",
+    "prompt": "只有S盒数学指标，能否宣布毛刺环境下一定侧信道安全？"
+  },
+  {
+    "id": "research-triage-normal",
+    "capability": "research-triage",
+    "prompt": "围绕原书§13.6问题16，给一个有限候选搜索计划，写清何种结果可声称以及文献核查义务。"
+  },
+  {
+    "id": "research-triage-boundary",
+    "capability": "research-triage",
+    "prompt": "能否凭2021年的第13章断言问题截至2026年仍开放？"
+  }
+]
