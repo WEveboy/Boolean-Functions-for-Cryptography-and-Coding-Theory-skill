@@ -1,3 +1,5 @@
+> 0.2版更新：现有18张能力卡。原13主题正文保留；新增[BCT](.cangjie/capabilities/cards/boomerang.md)、[迹与对偶基](.cangjie/capabilities/cards/field-trace-dual.md)、[EA/CCZ证书](.cangjie/capabilities/cards/equivalence-certificate.md)、[高阶距离](.cangjie/capabilities/cards/higher-order-distance.md)与[函数码](.cangjie/capabilities/cards/function-code.md)。以下正文中的未实现范围以0.2版使用合同和更新日志为准。
+
 # 从函数结构走到密码与编码：Carlet全书蒸馏
 
 Claude Carlet《Boolean Functions for Cryptography and Coding Theory》(2021)把一个问题反复展开：一个只有零和一的函数，怎样支持安全通信，又怎样暴露可被利用的结构？答案不是挑一个最漂亮的指标，而是明确攻击者能利用什么关系，再寻找能控制这些关系的表示、判据与构造。

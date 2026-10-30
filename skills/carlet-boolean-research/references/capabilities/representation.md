@@ -21,7 +21,7 @@
 
 ## E — Execution
 
-输入n与2^n个二进制值，x的第i位为x_i。用二元Möbius变换a[S]=XOR_{T⊆S}f[T]；同一变换再次执行应还原真值表。输出非零单项式掩码与次数，零函数次数D约定-1（原书p.35约定0）。等价关系只作参考定位：EA/CCZ完整证书验证和搜索不在本卡实现契约内。
+输入n与2^n个二进制值，x的第i位为x_i。用二元Möbius变换a[S]=XOR_{T⊆S}f[T]；同一变换再次执行应还原真值表。输出非零单项式掩码与次数，零函数次数D约定-1（原书p.35约定0）。等价关系的具体证书转equivalence-certificate；本卡不搜索未知变换。
 
 实现D：research_core.anf(table)；CLI的anf_masks与degree。 输入来源与方法前提必须记录，结果区分“定理条件核对”“有限全算”“未算/未证”。输入超预算即停止对应计算并报告原因。标准库Python3.10+；CLI命令和预算见resources/usage.md。
 
@@ -36,6 +36,8 @@
 路径相对于本文件；脚本需先检查运行条件，不因附带而自动执行。
 
 - [resources/research_core.py](../../resources/research_core.py)
+- [resources/research_extensions.py](../../resources/research_extensions.py)
 - [resources/usage.md](../../resources/usage.md)
 - [resources/formula-audit.md](../../resources/formula-audit.md)
+- [resources/v0.2-source-audit.md](../../resources/v0.2-source-audit.md)
 - [resources/examples.json](../../resources/examples.json)

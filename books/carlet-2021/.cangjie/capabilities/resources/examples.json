@@ -35,5 +35,131 @@
       7,
       2
     ]
+  },
+  "bct-identity": {
+    "operation": "boomerang",
+    "n": 2,
+    "table": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "trace-gf4": {
+    "operation": "field-trace",
+    "n": 2,
+    "modulus": 7
+  },
+  "nl2-cubic": {
+    "operation": "higher-order",
+    "n": 3,
+    "r": 2,
+    "table": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "code-identity": {
+    "operation": "function-code",
+    "n": 2,
+    "m": 2,
+    "table": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "ccz-inverse-gf8": {
+    "operation": "ccz-certificate",
+    "n": 3,
+    "m": 3,
+    "table": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      2
+    ],
+    "target": [
+      0,
+      1,
+      7,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "graph_rows": [
+      8,
+      16,
+      32,
+      1,
+      2,
+      4
+    ]
+  },
+  "ea-identity": {
+    "operation": "ea-certificate",
+    "n": 2,
+    "m": 2,
+    "table": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "target": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "input_rows": [
+      1,
+      2
+    ],
+    "output_rows": [
+      1,
+      2
+    ]
+  },
+  "batch-mixed": {
+    "operation": "batch",
+    "jobs": [
+      {
+        "operation": "field-trace",
+        "n": 2,
+        "modulus": 7
+      },
+      {
+        "operation": "boomerang",
+        "n": 2,
+        "table": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "n": 3,
+        "table": [
+          0,
+          1
+        ]
+      }
+    ]
   }
 }

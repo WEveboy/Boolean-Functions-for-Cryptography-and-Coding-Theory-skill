@@ -50,7 +50,8 @@ def scalar(table, n):
     validate(table, n)
     w = fwht([1-2*y for y in table])
     a = anf(table)
-    ac = [sum(1-2*(table[x] ^ table[x ^ d]) for x in range(1 << n)) for d in range(1 << n)]
+    # Wiener-Khinchin on F2^n: integer exact, O(n*2^n), not O(4^n).
+    ac = [v // (1 << n) for v in fwht([v*v for v in w])]
     ci = 0
     for t in range(1, n+1):
         if any(w[u] for u in range(1, 1 << n) if u.bit_count() <= t):
@@ -62,6 +63,9 @@ def scalar(table, n):
             break
         pc = t
     maximum = max(map(abs, w))
+    best = next(u for u,v in enumerate(w) if abs(v) == maximum)
+    ci_failure = next((u for u in sorted(range(1,1 << n), key=lambda u:(u.bit_count(),u)) if w[u]),None)
+    pc_failure = next((u for u in sorted(range(1,1 << n), key=lambda u:(u.bit_count(),u)) if ac[u]),None)
     return dict(n=n, weight=sum(table), balanced=sum(table)*2 == 1 << n,
                 anf_masks=[i for i,c in enumerate(a) if c],
                 degree=max((i.bit_count() for i,c in enumerate(a) if c), default=-1),
@@ -70,13 +74,17 @@ def scalar(table, n):
                 resiliency=ci if w[0] == 0 else None, pc_order=pc,
                 bent=n % 2 == 0 and all(v*v == 1 << n for v in w),
                 plateaued=len({abs(v) for v in w if v}) == 1,
-                parseval=sum(v*v for v in w) == 1 << (2*n))
+                parseval=sum(v*v for v in w) == 1 << (2*n),
+                closest_affine={'linear_mask':best,'constant':int(w[best]<0),'distance':(1 << (n-1))-maximum//2},
+                ci_failure_mask=ci_failure, pc_failure_direction=pc_failure,
+                absolute_indicator=max(map(abs,ac[1:])),
+                sum_of_squares_indicator=sum(v*v for v in ac))
 
 
 def vector(table, n, m):
     validate(table, n, m)
-    if n > 8 or n+m > 14:
-        raise ValueError('vector budget: n<=8 and n+m<=14')
+    if n > 8 or n+m > 16:
+        raise ValueError('vector budget: n<=8 and n+m<=16')
     rows = []
     for d in range(1 << n):
         row = [0] * (1 << m)
@@ -88,13 +96,24 @@ def vector(table, n, m):
     for b in range(1, 1 << m):
         f = [parity(b & y) for y in table]
         w = fwht([1-2*y for y in f])
+        coefficients=anf(f)
         components[str(b)] = {'walsh': w, 'nonlinearity': (1 << (n-1))-max(map(abs,w))//2,
-                              'balanced': sum(f)*2 == 1 << n}
+                              'balanced': sum(f)*2 == 1 << n,
+                              'degree':max((u.bit_count() for u,v in enumerate(coefficients) if v), default=-1)}
     delta = max(max(row) for row in rows[1:])
+    witness=next((a,b) for a in range(1,1 << n) for b in range(1 << m) if rows[a][b]==delta)
+    all_w=[v for comp in components.values() for v in comp['walsh']]
     return dict(n=n, m=m, permutation=n == m and len(set(table)) == 1 << n,
                 balanced=all(c['balanced'] for c in components.values()),
                 nonlinearity=min(c['nonlinearity'] for c in components.values()),
-                differential_uniformity=delta, apn=n == m and delta == 2, ddt=rows, components=components)
+                differential_uniformity=delta, apn=n == m and delta == 2, ddt=rows, components=components,
+                differential_witness={'input_difference':witness[0],'output_difference':witness[1],
+                                      'solutions':[x for x in range(1 << n) if table[x]^table[x^witness[0]]==witness[1]]},
+                ab=n==m and n%2==1 and all(v==0 or v*v==(1 << (n+1)) for v in all_w),
+                vectorial_bent=n%2==0 and all(v*v==1 << n for v in all_w),
+                coordinate_degree=max(components[str(1 << i)]['degree'] for i in range(m)),
+                minimum_component_degree=min(x['degree'] for x in components.values()),
+                weakest_component=min(range(1,1 << m),key=lambda b:components[str(b)]['nonlinearity']))
 
 
 def rank(rows):
@@ -199,8 +218,12 @@ def power(a,d,mod,n):
 
 
 def field_power(n,mod,d):
-    if not 1<=n<=8 or type(d) is not int or d<1 or type(mod) is not int or mod.bit_length()!=n+1:
-        raise ValueError('field power: n<=8, degree-n binary modulus, positive exponent required')
+    if type(n) is not int or not 1<=n<=8:
+        raise ValueError('field dimension n must be an integer in 1..8')
+    if type(d) is not int or d<1:
+        raise ValueError('field exponent must be a positive integer')
+    if type(mod) is not int or mod<=0 or mod.bit_length()!=n+1:
+        raise ValueError('modulus must be a positive binary polynomial of degree n')
     # In a field every nonzero residue is a unit; this exhaustive check also rejects reducible moduli.
     if any(power(x,(1<<n)-1,mod,n) != 1 for x in range(1,1<<n)):
         raise ValueError('modulus is not irreducible')
@@ -217,6 +240,12 @@ def symmetry(table,n):
 
 
 def analyze(spec):
+    if not isinstance(spec,dict):
+        raise ValueError('spec must be a JSON object')
+    operation=spec.get('operation','analyze')
+    if operation != 'analyze':
+        from research_extensions import run
+        return run(spec)
     n,m,table = spec['n'],spec.get('m',1),spec['table']
     validate(table,n,m)
     result = scalar(table,n) if m==1 else vector(table,n,m)
@@ -229,6 +258,7 @@ def analyze(spec):
     result['specification']={'n':n,'m':m,'bit_order':'x_i=(x>>i)&1','table':table}
     result['input_sha256']=hashlib.sha256(json.dumps(result['specification'],sort_keys=True,separators=(',',':')).encode()).hexdigest()
     result['evidence']='exhaustive for the supplied finite table; not an infinite-family proof'
+    result['tool_version']='0.2.0'
     return result
 
 

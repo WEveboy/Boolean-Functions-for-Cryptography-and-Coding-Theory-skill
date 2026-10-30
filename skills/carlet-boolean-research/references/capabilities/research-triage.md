@@ -23,7 +23,7 @@
 
 输入原书问题的节号及编号、参数范围和计算预算。输出历史命题、已知前提、有限实验、证明义务和文献核查清单。候选新颖性先指定EA或CCZ等价口径，谱一致不能当等价证书，谱不同仅在已知不变量条件下用于排除。只有经实时一手文献核查才可更新当前状态；未查则标出版时状态。
 
-实现D：给出带条件的研究记录；计算候选使用vector与field-power。 输入来源与方法前提必须记录，结果区分“定理条件核对”“有限全算”“未算/未证”。输入超预算即停止对应计算并报告原因。标准库Python3.10+；CLI命令和预算见resources/usage.md。
+实现D：给出带条件的研究记录；计算候选使用vector与field-power，可用operation=batch串行记录最多32个任务，逐项保留成功或错误，禁止嵌套批次。 输入来源与方法前提必须记录，结果区分“定理条件核对”“有限全算”“未算/未证”。输入超预算即停止对应计算并报告原因。标准库Python3.10+；CLI命令和预算见resources/usage.md。
 
 ## B — Boundary
 
@@ -36,6 +36,8 @@
 路径相对于本文件；脚本需先检查运行条件，不因附带而自动执行。
 
 - [resources/research_core.py](../../resources/research_core.py)
+- [resources/research_extensions.py](../../resources/research_extensions.py)
 - [resources/usage.md](../../resources/usage.md)
 - [resources/formula-audit.md](../../resources/formula-audit.md)
+- [resources/v0.2-source-audit.md](../../resources/v0.2-source-audit.md)
 - [resources/examples.json](../../resources/examples.json)

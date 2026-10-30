@@ -15,3 +15,8 @@
 | cap.carlet.field-power | 有限域模型与APN幂函数实验 | critical | 有限域模型与APN幂函数实验 | 有限域、Gold、APN幂函数、trace、不可约、finite field | capabilities/field-power.md |
 | cap.carlet.model-review | 攻击模型与实现假设审查 | high | 攻击模型与实现假设审查 | 阈值实现、masking、物理攻击、TI、FHE、local PRG、Gowers | capabilities/model-review.md |
 | cap.carlet.research-triage | 历史开放问题与证据分级 | high | 历史开放问题与证据分级 | 开放问题、研究计划、big APN、novelty、新颖性、open questions | capabilities/research-triage.md |
+| cap.carlet.boomerang | BCT与boomerang均匀度 | high | BCT与boomerang均匀度 | BCT、boomerang、回旋镖、S盒 | capabilities/boomerang.md |
+| cap.carlet.field-trace-dual | 绝对迹与多项式基对偶基 | high | 绝对迹与多项式基对偶基 | 绝对迹、dual basis、对偶基、trace、域掩码 | capabilities/field-trace-dual.md |
+| cap.carlet.equivalence-certificate | 给定EA与CCZ等价证书 | high | 给定EA与CCZ等价证书 | EA证书、CCZ证书、graph affine、等价验证 | capabilities/equivalence-certificate.md |
+| cap.carlet.higher-order-distance | 预算内精确高阶非线性度 | high | 预算内精确高阶非线性度 | 高阶非线性度、NL_r、二阶距离、RM距离 | capabilities/higher-order-distance.md |
+| cap.carlet.function-code | 函数生成码、秩门与重量分布 | high | 函数生成码、秩门与重量分布 | 函数生成码、重量分布、rank gate、few-weight code | capabilities/function-code.md |

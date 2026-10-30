@@ -2,7 +2,7 @@
 
 基于Claude Carlet《Boolean Functions for Cryptography and Coding Theory》（2021）的研究技能。仿照已有Boolean Vector Research项目，使用cangjie-skill v2.5完成来源提取、能力分流和Bundle编译。新入口为`carlet-boolean-research`，避免覆盖旧技能。
 
-13张能力卡连接ANF、Walsh、RM、bent、APN、韧性、传播、AI、有限域与研究边界；Python标准库工具对小规模真值表执行精确核验。全书主题均有覆盖去向，**计算器实现范围是有限子集**，见[使用合同](skills/carlet-boolean-research/resources/usage.md)。
+当前版本 **0.2.0**：18张能力卡连接ANF、Walsh、RM、bent、APN、BCT、迹/对偶基、给定EA/CCZ证书、精确高阶距离与函数码重量分布。Python标准库工具提供预算内精确计算和批量执行；旧版JSON输入保持可用。详见[更新日志](CHANGELOG.md)与[使用合同](skills/carlet-boolean-research/resources/usage.md)。
 
 ## 开始使用
 
@@ -16,13 +16,16 @@ $carlet-boolean-research 用GF(8)中x^3作例子，写清模多项式，核验�
 
 ```text
 python skills/carlet-boolean-research/resources/research_core.py examples/quadratic-bent.json --out output/result.json
+python skills/carlet-boolean-research/resources/research_core.py examples/trace-gf4.json --out output/trace.json
+python skills/carlet-boolean-research/resources/research_core.py examples/ccz-inverse-gf8.json --out output/ccz.json
+python skills/carlet-boolean-research/resources/research_core.py examples/batch-mixed.json --out output/batch.json
 python -m unittest discover -s tools -p "test_*.py" -v
 ```
 
 ## 阅读与复现
 
 - [整书骨架](books/carlet-2021/BOOK_OVERVIEW.md)、[精华长文](books/carlet-2021/DIGEST.md)、[术语](books/carlet-2021/GLOSSARY.md)。
-- [覆盖审计](books/carlet-2021/coverage-audit.md)、[三重验证](books/carlet-2021/verified.md)、[测试记录](docs/VALIDATION.md)。
+- [覆盖审计](books/carlet-2021/coverage-audit.md)、[三重验证](books/carlet-2021/verified.md)、[0.2版验证](docs/VALIDATION-0.2.0.md)、[0.1版历史记录](docs/VALIDATION.md)。
 - 唯一编译源为`books/carlet-2021/.cangjie/capabilities/verified.yaml`与同目录cards/resources；最终skills为生成目录，不手改。编译需cangjie-skill v2.5及其PyYAML等作者端依赖；计算器本身无第三方依赖。
 - [上传与维护流程](docs/UPLOAD_WORKFLOW.md)。没有把cangjie工具本体复制进仓库。
 

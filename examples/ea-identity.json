@@ -1,0 +1,25 @@
+{
+  "operation": "ea-certificate",
+  "n": 2,
+  "m": 2,
+  "table": [
+    0,
+    1,
+    3,
+    2
+  ],
+  "target": [
+    0,
+    1,
+    3,
+    2
+  ],
+  "input_rows": [
+    1,
+    2
+  ],
+  "output_rows": [
+    1,
+    2
+  ]
+}

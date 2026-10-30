@@ -1,12 +1,12 @@
 ---
 name: carlet-boolean-research
 description: |
-  基于Claude Carlet专著的布尔函数与向量函数研究：ANF、Walsh、RM、bent、APN、韧性、传播和代数免疫；提供有限真值表精确核验及来源边界。适用于构造分析、条件核对和研究规划，不证明系统安全或自动完成分类。
+  基于Carlet专著的布尔函数研究：ANF、Walsh、bent/APN、BCT、迹与对偶基、EA/CCZ给定证书、高阶RM距离和函数码重量分布。提供预算内精确核验与批量实验；不作未知等价搜索、完整分类或系统安全证明。
 metadata:
   cangjie.generated-by: cangjie-tools v2.5.0
   cangjie.variant: single
   cangjie.bundle-id: bundle.carlet-boolean-research
-  cangjie.capability-count: 13
+  cangjie.capability-count: 18
   cangjie.entrypoint-count: 1
 ---
 # Boolean Functions for Cryptography and Coding Theory — 全书能力入口
@@ -15,7 +15,7 @@ metadata:
 
 **适用**：与本书能力域相关的咨询与任务（见下方路由表的意图列）。
 **不适用**：
-- 一般译码、完整EA/CCZ分类、系统安全证明；未提供的BCT/DLCT/FAI算法。
+- 一般译码、未知EA/CCZ变换搜索与完整分类、系统安全证明；DLCT/FAI算法。
 
 ## 核心原则（常驻速览，概览类问题读到这里即可回答）
 
@@ -42,6 +42,11 @@ metadata:
 | 有限域模型与APN幂函数实验 | references/capabilities/field-power.md | references/capabilities/representation.md |
 | 攻击模型与实现假设审查 | references/capabilities/model-review.md | references/capabilities/representation.md |
 | 历史开放问题与证据分级 | references/capabilities/research-triage.md | references/capabilities/representation.md |
+| BCT与boomerang均匀度 | references/capabilities/boomerang.md | references/capabilities/representation.md |
+| 绝对迹与多项式基对偶基 | references/capabilities/field-trace-dual.md | references/capabilities/representation.md |
+| 给定EA与CCZ等价证书 | references/capabilities/equivalence-certificate.md | references/capabilities/representation.md |
+| 预算内精确高阶非线性度 | references/capabilities/higher-order-distance.md | references/capabilities/representation.md |
+| 函数生成码、秩门与重量分布 | references/capabilities/function-code.md | references/capabilities/representation.md |
 
 **非能力类查询**：
 - 书名/作者/章节/整书概览 → references/overview.md

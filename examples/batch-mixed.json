@@ -1,0 +1,27 @@
+{
+  "operation": "batch",
+  "jobs": [
+    {
+      "operation": "field-trace",
+      "n": 2,
+      "modulus": 7
+    },
+    {
+      "operation": "boomerang",
+      "n": 2,
+      "table": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "n": 3,
+      "table": [
+        0,
+        1
+      ]
+    }
+  ]
+}

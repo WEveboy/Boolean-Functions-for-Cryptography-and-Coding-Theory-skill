@@ -39,6 +39,21 @@
     },
     "cap.carlet.research-triage": {
       "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.boomerang": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.field-trace-dual": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.equivalence-certificate": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.higher-order-distance": {
+      "served_by": "carlet-boolean-research"
+    },
+    "cap.carlet.function-code": {
+      "served_by": "carlet-boolean-research"
     }
   }
 }

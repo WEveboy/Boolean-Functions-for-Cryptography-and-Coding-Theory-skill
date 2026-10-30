@@ -4,10 +4,10 @@ book:
   title: Boolean Functions for Cryptography and Coding Theory
   author: Claude Carlet
   source_pack: carlet-2021
-  baseline_tag: v0.1.0
+  baseline_tag: v0.2.0
 entry:
   name: carlet-boolean-research
-  description: 基于Claude Carlet专著的布尔函数与向量函数研究：ANF、Walsh、RM、bent、APN、韧性、传播和代数免疫；提供有限真值表精确核验及来源边界。适用于构造分析、条件核对和研究规划，不证明系统安全或自动完成分类。
+  description: 基于Carlet专著的布尔函数研究：ANF、Walsh、bent/APN、BCT、迹与对偶基、EA/CCZ给定证书、高阶RM距离和函数码重量分布。提供预算内精确核验与批量实验；不作未知等价搜索、完整分类或系统安全证明。
   core_principles:
   - 先固定n、m、真值表位序和域模型；按意图读一张能力卡。
   - 区分B原书、D独立实现、H猜想；有限全算不冒充无限族证明。
@@ -15,16 +15,16 @@ entry:
   - 命令和预算见resources/usage.md；结果写用户工作目录。
   - 第13章仅表示出版时状态；当前开放性和新颖性另查一手文献。
   out_of_scope:
-  - 一般译码、完整EA/CCZ分类、系统安全证明；未提供的BCT/DLCT/FAI算法。
+  - 一般译码、未知EA/CCZ变换搜索与完整分类、系统安全证明；DLCT/FAI算法。
   stop_conditions:
   - 缺规格时先补齐；超预算或定理前提不满足时报告未算/未证。
 router_entry:
   name: carlet-boolean-research-router
-  description: 基于Claude Carlet专著的布尔函数与向量函数研究：ANF、Walsh、RM、bent、APN、韧性、传播和代数免疫；提供有限真值表精确核验及来源边界。适用于构造分析、条件核对和研究规划，不证明系统安全或自动完成分类。
+  description: 基于Carlet专著的布尔函数研究：ANF、Walsh、bent/APN、BCT、迹与对偶基、EA/CCZ给定证书、高阶RM距离和函数码重量分布。提供预算内精确核验与批量实验；不作未知等价搜索、完整分类或系统安全证明。
 promotion_budget: 2
 capabilities:
 - capability_id: cap.carlet.representation
-  revision: 1
+  revision: 2
   status: active
   slug: representation
   title: 表示、位序与ANF
@@ -52,8 +52,10 @@ capabilities:
     location: §2.1–2.2 pp.27–51
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -65,7 +67,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.scalar-spectrum
-  revision: 1
+  revision: 2
   status: active
   slug: scalar-spectrum
   title: Walsh谱与非线性度
@@ -93,8 +95,10 @@ capabilities:
     location: §2.3 pp.52–73；§3.1 pp.76–111
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -106,7 +110,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.vector-metrics
-  revision: 1
+  revision: 2
   status: active
   slug: vector-metrics
   title: 全部分量、DDT与S盒指标
@@ -127,7 +131,7 @@ capabilities:
   - cap.carlet.representation
   card: cards/vector-metrics.md
   frontmatter:
-    description: S盒、DDT、向量非线性度、APN、AB、分量、permutation；APN只说明delta=2，不自动说明置换或最佳非线性度。工具不实现BCT、DLCT及完整CCZ分类。
+    description: S盒、DDT、向量非线性度、APN、AB、分量、permutation；APN只说明delta=2，不自动说明置换或最佳非线性度。BCT转boomerang卡；DLCT与完整CCZ分类未实现。
     tags:
     - boolean-functions
     - carlet
@@ -136,8 +140,10 @@ capabilities:
     location: §3.2–3.4 pp.112–141；§11.3 pp.371–393
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -149,7 +155,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.reed-muller
-  revision: 1
+  revision: 2
   status: active
   slug: reed-muller
   title: Reed–Muller距离与码参数
@@ -168,7 +174,7 @@ capabilities:
   - cap.carlet.representation
   card: cards/reed-muller.md
   frontmatter:
-    description: RM码、Reed-Muller、高阶非线性度、覆盖半径、函数生成码；码最小距离、函数到码的距离和覆盖半径是不同问题。自动计算工具只提供RM参数，不提供一般高阶距离或通用译码器。
+    description: RM码、Reed-Muller、高阶非线性度、覆盖半径、函数生成码；码最小距离、函数到码的距离和覆盖半径是不同问题。高阶精确距离转higher-order-distance，函数生成码转function-code；预算外一般距离与通用译码未实现。
     tags:
     - boolean-functions
     - carlet
@@ -177,8 +183,10 @@ capabilities:
     location: 第4章 pp.151–163
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -190,7 +198,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.quadratic-rank
-  revision: 1
+  revision: 2
   status: active
   slug: quadratic-rank
   title: 二次极化秩与谱支撑
@@ -218,8 +226,10 @@ capabilities:
     location: §5.2 pp.170–179
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -231,7 +241,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.bent-construction
-  revision: 1
+  revision: 2
   status: active
   slug: bent-construction
   title: 构造并核验bent与plateaued
@@ -260,8 +270,10 @@ capabilities:
     location: §6.1–6.2 pp.190–265
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -273,7 +285,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.resilience
-  revision: 1
+  revision: 2
   status: active
   slug: resilience
   title: 相关免疫与韧性阶数
@@ -301,8 +313,10 @@ capabilities:
     location: 第7章 pp.284–317；§3.1
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -314,7 +328,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.propagation
-  revision: 1
+  revision: 2
   status: active
   slug: propagation
   title: 自相关、SAC与传播准则
@@ -343,8 +357,10 @@ capabilities:
     location: 第8章 pp.318–320；§2.3 p.62
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -356,7 +372,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.algebraic-immunity
-  revision: 1
+  revision: 2
   status: active
   slug: algebraic-immunity
   title: 代数免疫与零化子证书
@@ -384,8 +400,10 @@ capabilities:
     location: §3.1 p.92；第9章 pp.321–351
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -397,7 +415,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.symmetry
-  revision: 1
+  revision: 2
   status: active
   slug: symmetry
   title: 对称族与受限输入核查
@@ -426,8 +444,10 @@ capabilities:
     location: 第10章 pp.352–368；§12.2 pp.453–467
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -439,7 +459,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.field-power
-  revision: 1
+  revision: 2
   status: active
   slug: field-power
   title: 有限域模型与APN幂函数实验
@@ -459,7 +479,7 @@ capabilities:
   - cap.carlet.representation
   card: cards/field-power.md
   frontmatter:
-    description: 有限域、Gold、APN幂函数、trace、不可约、finite field；不同模多项式下整数标签不是同一个元素。不可约不等于本原；本工具没有迹/对偶基计算器，不把8维以下全算当无限族证明。
+    description: 有限域、Gold、APN幂函数、trace、不可约、finite field；不同模多项式下整数标签不是同一个元素。不可约不等于本原；迹/对偶基转field-trace-dual，不把8维以下全算当无限族证明。
     tags:
     - boolean-functions
     - carlet
@@ -468,8 +488,10 @@ capabilities:
     location: §2.2.2 pp.41–46；§11.3–11.5 pp.371–411；第14章 pp.480–497
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -481,7 +503,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.model-review
-  revision: 1
+  revision: 2
   status: active
   slug: model-review
   title: 攻击模型与实现假设审查
@@ -511,8 +533,10 @@ capabilities:
     location: 第3章 pp.76–150；第12章 pp.425–474
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router
@@ -524,7 +548,7 @@ capabilities:
       independent_eval: true
     notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
 - capability_id: cap.carlet.research-triage
-  revision: 1
+  revision: 2
   status: active
   slug: research-triage
   title: 历史开放问题与证据分级
@@ -553,8 +577,221 @@ capabilities:
     location: 第13章 pp.475–479
   resources:
   - resources/research_core.py
+  - resources/research_extensions.py
   - resources/usage.md
   - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.boomerang
+  revision: 1
+  status: active
+  slug: boomerang
+  title: BCT与boomerang均匀度
+  importance: high
+  importance_rationale: 'T03/T11: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 只在置换上计算逆函数BCT，最大值排除两个零差分轴。
+  intents:
+  - BCT与boomerang均匀度
+  keywords:
+  - BCT
+  - boomerang
+  - 回旋镖
+  - S盒
+  also_read:
+  - cap.carlet.representation
+  card: cards/boomerang.md
+  frontmatter:
+    description: BCT、boomerang、回旋镖、S盒；重复输出时拒绝逆函数BCT；该参数不一般保持EA/CCZ不变，不把delta相同当BCT相同。单盒指标不证明多轮攻击复杂度。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §3.4.1 pp.141–142，式(3.42)
+  resources:
+  - resources/research_core.py
+  - resources/research_extensions.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.field-trace-dual
+  revision: 1
+  status: active
+  slug: field-trace-dual
+  title: 绝对迹与多项式基对偶基
+  importance: high
+  importance_rationale: 'T14: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 固定不可约模多项式和多项式基，用迹配对恢复坐标内积。
+  intents:
+  - 绝对迹与多项式基对偶基
+  keywords:
+  - 绝对迹
+  - dual basis
+  - 对偶基
+  - trace
+  - 域掩码
+  also_read:
+  - cap.carlet.representation
+  card: cards/field-trace-dual.md
+  frontmatter:
+    description: 绝对迹、dual basis、对偶基、trace、域掩码；只支持所声明多项式基；不可约不等于本原。Tr为F2线性，不能照抄原书p.489的Fq线性措辞冲突。不同模多项式必须先建立域同构才能比较整数标签。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §14.3.1 p.489；§14.2 pp.483–484
+  resources:
+  - resources/research_core.py
+  - resources/research_extensions.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.equivalence-certificate
+  revision: 1
+  status: active
+  slug: equivalence-certificate
+  title: 给定EA与CCZ等价证书
+  importance: high
+  importance_rationale: 'T01/T11: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 验证给定可逆仿射变换的逐点等式，不把失败证书当成不等价证明。
+  intents:
+  - 给定EA与CCZ等价证书
+  keywords:
+  - EA证书
+  - CCZ证书
+  - graph affine
+  - 等价验证
+  also_read:
+  - cap.carlet.representation
+  card: cards/equivalence-certificate.md
+  frontmatter:
+    description: EA证书、CCZ证书、graph affine、等价验证；矩阵第i行的内积给第i输出位，与原书行向量形式需转置。只有所给证书失败，不能推出EA/CCZ不等价；没有未知变换搜索、全分类或新颖性证明。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §2.1 pp.28–30，Definition 5
+  resources:
+  - resources/research_core.py
+  - resources/research_extensions.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.higher-order-distance
+  revision: 1
+  status: active
+  slug: higher-order-distance
+  title: 预算内精确高阶非线性度
+  importance: high
+  importance_rationale: 'T02/T04: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 将高阶非线性度落实到RM码的有限精确距离，先核枚举规模。
+  intents:
+  - 预算内精确高阶非线性度
+  keywords:
+  - 高阶非线性度
+  - NL_r
+  - 二阶距离
+  - RM距离
+  also_read:
+  - cap.carlet.representation
+  card: cards/higher-order-distance.md
+  frontmatter:
+    description: 高阶非线性度、NL_r、二阶距离、RM距离；超出K<=16即拒绝精确枚举，不能把未完成结果记最优；距离0的成员资格分支不受枚举维数限制。一次给定函数到码的距离不是覆盖半径。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §3.1.3 pp.79–84；§4.1.6 pp.157–158
+  resources:
+  - resources/research_core.py
+  - resources/research_extensions.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
+  - resources/examples.json
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: false
+      independent_reuse: true
+      independent_eval: true
+    notes: 共用规格和计算资源，仿照参考项目single入口；不创建与旧boolean-vector-research重名的发现入口。
+- capability_id: cap.carlet.function-code
+  revision: 1
+  status: active
+  slug: function-code
+  title: 函数生成码、秩门与重量分布
+  importance: high
+  importance_rationale: 'T04/T11: 防止遗漏输入条件与误报理论结论。'
+  one_liner: 先计算实际生成矩阵秩，再枚举不同码字；退化参数不套满秩距离公式。
+  intents:
+  - 函数生成码、秩门与重量分布
+  keywords:
+  - 函数生成码
+  - 重量分布
+  - rank gate
+  - few-weight code
+  also_read:
+  - cap.carlet.representation
+  card: cards/function-code.md
+  frontmatter:
+    description: 函数生成码、重量分布、rank gate、few-weight code；原书p.160的维数n+m+1及d=NL需要F无仿射分量。缺满秩时只报告实际码参数；不把不同(a,b,c)的次数当不同码字数。没有一般码分类或译码算法。
+    tags:
+    - boolean-functions
+    - carlet
+  source_evidence:
+  - source_id: carlet-2021
+    location: §4.2 p.160；§2.3.6 pp.71–73
+  resources:
+  - resources/research_core.py
+  - resources/research_extensions.py
+  - resources/usage.md
+  - resources/formula-audit.md
+  - resources/v0.2-source-audit.md
   - resources/examples.json
   promotion:
     destination: router

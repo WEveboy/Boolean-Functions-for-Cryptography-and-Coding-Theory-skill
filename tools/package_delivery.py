@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 files=[]
-for name in ['README.md','AGENTS.md','LICENSE','.gitignore','.gitattributes','source-manifest.json']:
+for name in ['README.md','CHANGELOG.md','AGENTS.md','LICENSE','.gitignore','.gitattributes','source-manifest.json','version.json']:
     files.append(root/name)
 for name in ['.github','docs','tools','examples','skills/carlet-boolean-research','books/carlet-2021']:
     for f in (root/name).rglob('*'):
@@ -17,7 +17,7 @@ for name in ['.github','docs','tools','examples','skills/carlet-boolean-research
         if f.is_symlink():
             raise ValueError('symlink not permitted')
         files.append(f)
-manifest={'version':'0.1.0','hash_algorithm':'SHA256','files':{}}
+manifest={'version':json.loads((root/'version.json').read_text(encoding='utf-8'))['version'],'hash_algorithm':'SHA256','files':{}}
 entries=[]
 for f in sorted(set(files)):
     rel=f.relative_to(root).as_posix()

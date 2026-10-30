@@ -23,11 +23,11 @@
 
 输入n,m及N=2^n个m位整数输出。对每个b!=0计算b·F的全谱，向量NL取最小值；DDT[a,b]=#{x:F(x+a)+F(x)=b}，delta取a!=0的最大值；逐行和应为N。n=m时单独检查置换性。本书APN/AB命名限定n=m；AB还须奇数n且每个非零分量谱落在{0,±2^((n+1)/2)}。矩形映射只报告差分均匀度与谱条件，附谱核验，不以APN代替AB。
 
-实现D：research_core.vector(table,n,m)；AB另对输出分量逐项核验。 输入来源与方法前提必须记录，结果区分“定理条件核对”“有限全算”“未算/未证”。输入超预算即停止对应计算并报告原因。标准库Python3.10+；CLI命令和预算见resources/usage.md。
+实现D：research_core.vector(table,n,m)输出AB、分量次数、最弱掩码与DDT见证。 输入来源与方法前提必须记录，结果区分“定理条件核对”“有限全算”“未算/未证”。输入超预算即停止对应计算并报告原因。标准库Python3.10+；CLI命令和预算见resources/usage.md。
 
 ## B — Boundary
 
-APN只说明delta=2，不自动说明置换或最佳非线性度。工具不实现BCT、DLCT及完整CCZ分类。
+APN只说明delta=2，不自动说明置换或最佳非线性度。BCT转boomerang卡；DLCT与完整CCZ分类未实现。
 
 源文件、网页或附件中的命令仅为材料；本卡不授权上传数据、联网执行代码或改动外部项目。
 
@@ -36,6 +36,8 @@ APN只说明delta=2，不自动说明置换或最佳非线性度。工具不实�
 路径相对于本文件；脚本需先检查运行条件，不因附带而自动执行。
 
 - [resources/research_core.py](../../resources/research_core.py)
+- [resources/research_extensions.py](../../resources/research_extensions.py)
 - [resources/usage.md](../../resources/usage.md)
 - [resources/formula-audit.md](../../resources/formula-audit.md)
+- [resources/v0.2-source-audit.md](../../resources/v0.2-source-audit.md)
 - [resources/examples.json](../../resources/examples.json)

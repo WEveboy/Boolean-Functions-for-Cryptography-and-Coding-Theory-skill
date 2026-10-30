@@ -36,6 +36,8 @@ g必须非零；高代数次数不等于高AI，最优AI也不证明抵抗快速
 路径相对于本文件；脚本需先检查运行条件，不因附带而自动执行。
 
 - [resources/research_core.py](../../resources/research_core.py)
+- [resources/research_extensions.py](../../resources/research_extensions.py)
 - [resources/usage.md](../../resources/usage.md)
 - [resources/formula-audit.md](../../resources/formula-audit.md)
+- [resources/v0.2-source-audit.md](../../resources/v0.2-source-audit.md)
 - [resources/examples.json](../../resources/examples.json)

@@ -1,0 +1,931 @@
+[
+  {
+    "id": "bct-normal",
+    "selected_capability": "boomerang",
+    "answer": "在GF(16)、mod=19、多项式基和第i位=x_i的约定下，用独立乘方构造逆函数表并实际调用CLI。完整16×16 BCT见tool_result.bct，boomerang均匀度6；最大值见证a=1,b=6，解为[0,1,4,5,6,7]。求最大时排除a=0或b=0的两条差分轴；两轴表项均16。此为给定有限函数的全算。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "bct": [
+        [
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        [
+          16,
+          4,
+          0,
+          0,
+          0,
+          0,
+          6,
+          6,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          2,
+          0
+        ],
+        [
+          16,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          2,
+          0,
+          4,
+          6,
+          0,
+          2,
+          2,
+          0,
+          2
+        ],
+        [
+          16,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          2,
+          2,
+          6,
+          0,
+          4,
+          0
+        ],
+        [
+          16,
+          0,
+          0,
+          0,
+          0,
+          6,
+          2,
+          0,
+          6,
+          0,
+          2,
+          0,
+          0,
+          4,
+          2,
+          2
+        ],
+        [
+          16,
+          0,
+          0,
+          0,
+          6,
+          0,
+          2,
+          0,
+          2,
+          2,
+          0,
+          4,
+          2,
+          0,
+          0,
+          6
+        ],
+        [
+          16,
+          6,
+          0,
+          0,
+          2,
+          2,
+          6,
+          4,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          16,
+          6,
+          2,
+          2,
+          0,
+          0,
+          4,
+          6,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          16,
+          0,
+          0,
+          2,
+          6,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          2,
+          4
+        ],
+        [
+          16,
+          2,
+          4,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          6,
+          0,
+          6,
+          2
+        ],
+        [
+          16,
+          0,
+          6,
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          2,
+          6,
+          0
+        ],
+        [
+          16,
+          2,
+          0,
+          2,
+          0,
+          4,
+          0,
+          0,
+          6,
+          0,
+          0,
+          2,
+          2,
+          6,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          2,
+          6,
+          0,
+          2,
+          2,
+          0,
+          0,
+          6,
+          4,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          16,
+          2,
+          2,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          6,
+          0,
+          2,
+          0,
+          6
+        ],
+        [
+          16,
+          2,
+          0,
+          4,
+          2,
+          0,
+          0,
+          0,
+          2,
+          6,
+          6,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          16,
+          0,
+          2,
+          0,
+          2,
+          6,
+          0,
+          2,
+          4,
+          2,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ]
+      ],
+      "boomerang_uniformity": 6,
+      "witness": {
+        "a": 1,
+        "b": 6,
+        "solutions": [
+          0,
+          1,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "definition": "inverse-based BCT; maximum excludes a=0 and b=0",
+      "operation": "boomerang",
+      "tool_version": "0.2.0",
+      "input_sha256": "bc8bffb9b21ea77244e5275a652c0b78a9027c20e5db39ae52523345dcf0cf97",
+      "specification": {
+        "operation": "boomerang",
+        "n": 4,
+        "table": [
+          0,
+          1,
+          9,
+          14,
+          13,
+          11,
+          7,
+          6,
+          15,
+          2,
+          12,
+          5,
+          10,
+          4,
+          3,
+          8
+        ]
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    }
+  },
+  {
+    "id": "bct-boundary",
+    "selected_capability": "boomerang",
+    "answer": "实际运行被拒绝，退出码2，错误BCT requires a permutation with n<=8。表重复输出，不是置换，逆表不存在；不能为它报告逆函数定义的BCT。",
+    "execution": {
+      "returncode": 2,
+      "error": "BCT requires a permutation with n<=8"
+    },
+    "tool_result": null
+  },
+  {
+    "id": "trace-normal",
+    "selected_capability": "field-trace-dual",
+    "answer": "GF(8)固定mod=11；完整迹表[0,1,0,1,0,1,0,1]，多项式基[1,2,4]，对偶基[1,4,2]。CLI给出单位配对矩阵；另外用独立二元多项式乘法和迹表实际复核Tr(alpha_i beta_j)，所得矩阵为3×3单位阵。迹是F2线性。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "n": 3,
+      "modulus": 11,
+      "trace_table": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "polynomial_basis": [
+        1,
+        2,
+        4
+      ],
+      "dual_basis": [
+        1,
+        4,
+        2
+      ],
+      "pairing_rows": [
+        1,
+        4,
+        2
+      ],
+      "duality_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "linearity": "F2-linear, not generally GF(2^n)-linear",
+      "operation": "field-trace",
+      "tool_version": "0.2.0",
+      "input_sha256": "7b09d4e793fb215c6378198eed98bd43de44a376a71f3c6e7fd755b761a9e49e",
+      "specification": {
+        "operation": "field-trace",
+        "n": 3,
+        "modulus": 11
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    },
+    "independent_check": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "id": "trace-boundary",
+    "selected_capability": "field-trace-dual",
+    "answer": "实际运行拒绝modulus=-11，退出码2。错误field power: n<=8, degree-n binary modulus, positive exponent required。负整数不是所要求的正整数次数n二元模多项式。未产生迹表。",
+    "execution": {
+      "returncode": 2,
+      "error": "field power: n<=8, degree-n binary modulus, positive exponent required"
+    },
+    "tool_result": null
+  },
+  {
+    "id": "certificate-normal",
+    "selected_capability": "equivalence-certificate",
+    "answer": "独立有限域乘法构造F=[0,1,3,4,5,6,7,2]、G=[0,1,7,2,3,4,5,6]。图编码z=x+(F(x)<<3)，第i输出位取行掩码内积；交换两块行掩码为[8,16,32,1,2,4]，offset=0。实际验证通过true，checked_points=8；这是给定可逆CCZ证书的验证，无未知变换搜索。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "equivalent_under_certificate": true,
+      "checked_points": 8,
+      "relation": "CCZ",
+      "search_performed": false,
+      "operation": "ccz-certificate",
+      "tool_version": "0.2.0",
+      "input_sha256": "d5294f2db9fc1fbfef694c53f9c1c6fa66ae675305d856e21eef48de34b597c9",
+      "specification": {
+        "operation": "ccz-certificate",
+        "n": 3,
+        "m": 3,
+        "table": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          2
+        ],
+        "target": [
+          0,
+          1,
+          7,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "graph_rows": [
+          8,
+          16,
+          32,
+          1,
+          2,
+          4
+        ],
+        "offset": 0
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    }
+  },
+  {
+    "id": "certificate-boundary",
+    "selected_capability": "equivalence-certificate",
+    "answer": "实际验证返回false，首个反例x=0，预测0，目标1。输入/输出单位行掩码[1,2]和offset全0只说明这个证书失败，不能证明函数不等价；事实上输出平移1即可得到G。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "equivalent_under_certificate": false,
+      "failure": {
+        "x": 0,
+        "predicted": 0,
+        "actual": 1
+      },
+      "operation": "ea-certificate",
+      "tool_version": "0.2.0",
+      "input_sha256": "27d61061d3fb0637fc29681a037bccd41b74a48a8b5af63102f72be1aed1973d",
+      "specification": {
+        "operation": "ea-certificate",
+        "n": 2,
+        "m": 2,
+        "table": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "target": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "input_rows": [
+          1,
+          2
+        ],
+        "output_rows": [
+          1,
+          2
+        ],
+        "input_offset": 0,
+        "output_offset": 0,
+        "add_offset": 0
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    }
+  },
+  {
+    "id": "higher-normal",
+    "selected_capability": "higher-order-distance",
+    "answer": "实际运行精确得到二阶非线性度1，最近ANF掩码[]，即零多项式。RM(2,3)维数7，实际枚举128个码字。此为指定函数到RM码的精确距离，不是覆盖半径。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "order": 2,
+      "distance": 1,
+      "closest_anf_masks": [],
+      "enumerated_codewords": 128,
+      "rm_dimension": 7,
+      "operation": "higher-order",
+      "tool_version": "0.2.0",
+      "input_sha256": "438b4c32cbbd3996c96f3748b4bfdf8994975df2ae890aacbfa9219a910426d4",
+      "specification": {
+        "operation": "higher-order",
+        "n": 3,
+        "r": 2,
+        "table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    }
+  },
+  {
+    "id": "higher-boundary",
+    "selected_capability": "higher-order-distance",
+    "answer": "实际运行退出码2，错误RM enumeration budget exceeded: dimension must be <=16。f为六变量单项式，次数6不在RM(2,6)，需枚举维数1+6+15=22，超过16的预算。未报告距离最优值，未伪称枚举完成。",
+    "execution": {
+      "returncode": 2,
+      "error": "RM enumeration budget exceeded: dimension must be <=16"
+    },
+    "tool_result": null
+  },
+  {
+    "id": "code-normal",
+    "selected_capability": "function-code",
+    "answer": "实际运行参数数5（2^5=32个参数元组），实际维数3，仅8个不同码字，重量分布{0:1,2:6,4:1}，最小距离2。独立枚举全部非零分量及仿射Walsh掩码所得向量NL=0，分量掩码3恒零。实际秩退化，d=2不能套d=NL。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "length": 4,
+      "dimension": 3,
+      "parameter_count": 5,
+      "rank_deficient": true,
+      "generator_rows": [
+        10,
+        12,
+        10,
+        10,
+        15
+      ],
+      "independent_generator_rows": [
+        10,
+        12,
+        15
+      ],
+      "weight_distribution": {
+        "0": 1,
+        "2": 6,
+        "4": 1
+      },
+      "minimum_distance": 2,
+      "enumerated_codewords": 8,
+      "definition": "C={ (a dot x) XOR (b dot F(x)) XOR c : all x in F2^n }; c=0 if include_constant=false",
+      "weight_formula": "wt(a,b,c)=(2^n-(-1)^c*W_F(a,b))/2; full parameter tuples may repeat codewords",
+      "operation": "function-code",
+      "tool_version": "0.2.0",
+      "input_sha256": "306c8d8ce9ebe42b10c141a410640435d2eeb399e8a997fdf85f5a32ed666c2d",
+      "specification": {
+        "operation": "function-code",
+        "n": 2,
+        "m": 2,
+        "table": [
+          0,
+          3,
+          0,
+          3
+        ],
+        "include_constant": true
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    },
+    "independent_check": {
+      "nonlinearity": 0,
+      "components": [
+        {
+          "mask": 1,
+          "walsh": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "NL": 0
+        },
+        {
+          "mask": 2,
+          "walsh": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "NL": 0
+        },
+        {
+          "mask": 3,
+          "walsh": [
+            4,
+            0,
+            0,
+            0
+          ],
+          "NL": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "code-boundary",
+    "selected_capability": "function-code",
+    "answer": "实际运行include_constant=false，参数数4，实际维数3，重量分布{0:1,1:1,2:3,3:3}，最小距离1。独立分量Walsh枚举得到各非零掩码NL依次[1,1,0]，向量NL=0。该码不含可自由选取的常数参数且有零分量、秩退化，不满足公式前提；不能强套d=NL。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "length": 4,
+      "dimension": 3,
+      "parameter_count": 4,
+      "rank_deficient": true,
+      "generator_rows": [
+        10,
+        12,
+        7,
+        7
+      ],
+      "independent_generator_rows": [
+        10,
+        12,
+        7
+      ],
+      "weight_distribution": {
+        "0": 1,
+        "2": 3,
+        "3": 3,
+        "1": 1
+      },
+      "minimum_distance": 1,
+      "enumerated_codewords": 8,
+      "definition": "C={ (a dot x) XOR (b dot F(x)) XOR c : all x in F2^n }; c=0 if include_constant=false",
+      "weight_formula": "wt(a,b,c)=(2^n-(-1)^c*W_F(a,b))/2; full parameter tuples may repeat codewords",
+      "operation": "function-code",
+      "tool_version": "0.2.0",
+      "input_sha256": "a0c6002ae68f0a28778434559d5313fc3061f98c6210c93b8baa306e2e3be373",
+      "specification": {
+        "operation": "function-code",
+        "n": 2,
+        "m": 2,
+        "table": [
+          3,
+          3,
+          3,
+          0
+        ],
+        "include_constant": false
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    },
+    "independent_check": {
+      "nonlinearity": 0,
+      "components": [
+        {
+          "mask": 1,
+          "walsh": [
+            -2,
+            -2,
+            -2,
+            2
+          ],
+          "NL": 1
+        },
+        {
+          "mask": 2,
+          "walsh": [
+            -2,
+            -2,
+            -2,
+            2
+          ],
+          "NL": 1
+        },
+        {
+          "mask": 3,
+          "walsh": [
+            4,
+            0,
+            0,
+            0
+          ],
+          "NL": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "batch-normal",
+    "selected_capability": "field-trace-dual + boomerang",
+    "answer": "实际运行三个jobs，逐项状态[ok,ok,error]，completed=2、failed=1。GF(4)迹表[0,0,1,1]、对偶基[3,1]；2位恒等BCT为4×4全4矩阵，均匀度4；错误n=3长度2的表报table length/range/type mismatch，未丢弃前两项结果。",
+    "execution": {
+      "returncode": 0,
+      "error": ""
+    },
+    "tool_result": {
+      "records": [
+        {
+          "index": 0,
+          "status": "ok",
+          "result": {
+            "n": 2,
+            "modulus": 7,
+            "trace_table": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "polynomial_basis": [
+              1,
+              2
+            ],
+            "dual_basis": [
+              3,
+              1
+            ],
+            "pairing_rows": [
+              2,
+              3
+            ],
+            "duality_matrix": [
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "linearity": "F2-linear, not generally GF(2^n)-linear",
+            "operation": "field-trace",
+            "tool_version": "0.2.0",
+            "input_sha256": "cfcac31e218e0f81fedd8a7535536e78bed8bd3c06f4ccc848be81c5dbb8658b",
+            "specification": {
+              "operation": "field-trace",
+              "n": 2,
+              "modulus": 7
+            },
+            "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+          }
+        },
+        {
+          "index": 1,
+          "status": "ok",
+          "result": {
+            "bct": [
+              [
+                4,
+                4,
+                4,
+                4
+              ],
+              [
+                4,
+                4,
+                4,
+                4
+              ],
+              [
+                4,
+                4,
+                4,
+                4
+              ],
+              [
+                4,
+                4,
+                4,
+                4
+              ]
+            ],
+            "boomerang_uniformity": 4,
+            "witness": {
+              "a": 1,
+              "b": 1,
+              "solutions": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "definition": "inverse-based BCT; maximum excludes a=0 and b=0",
+            "operation": "boomerang",
+            "tool_version": "0.2.0",
+            "input_sha256": "aac256119f97bc6392d88b26bd56cb7060d7a5131dd307131f7475e04872bf6a",
+            "specification": {
+              "operation": "boomerang",
+              "n": 2,
+              "table": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+          }
+        },
+        {
+          "index": 2,
+          "status": "error",
+          "error": "table length/range/type mismatch"
+        }
+      ],
+      "completed": 2,
+      "failed": 1,
+      "operation": "batch",
+      "tool_version": "0.2.0",
+      "input_sha256": "21d88c7e9ebb83a04cb09e533de5d5ae96407cdeaff15723a063a525a095ce39",
+      "specification": {
+        "operation": "batch",
+        "jobs": [
+          {
+            "operation": "field-trace",
+            "n": 2,
+            "modulus": 7
+          },
+          {
+            "operation": "boomerang",
+            "n": 2,
+            "table": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "n": 3,
+            "table": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "evidence": "exact for supplied finite objects / certificate; no equivalence search or infinite-family proof"
+    }
+  },
+  {
+    "id": "batch-boundary",
+    "selected_capability": "none (batch contract / out-of-scope)",
+    "answer": "实际尝试嵌套batch，CLI退出码2，错误nested batch or non-object job is not supported，整个嵌套请求被拒绝。生日祝福不属于本技能能力域，应直接按普通写作请求处理，不调用本技能。",
+    "execution": {
+      "returncode": 2,
+      "error": "nested batch or non-object job is not supported"
+    },
+    "tool_result": null
+  }
+]

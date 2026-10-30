@@ -36,6 +36,8 @@ SAC不要求多位方向平衡，不能自动推PC(n)。EPC和有阶数PC需按�
 路径相对于本文件；脚本需先检查运行条件，不因附带而自动执行。
 
 - [resources/research_core.py](../../resources/research_core.py)
+- [resources/research_extensions.py](../../resources/research_extensions.py)
 - [resources/usage.md](../../resources/usage.md)
 - [resources/formula-audit.md](../../resources/formula-audit.md)
+- [resources/v0.2-source-audit.md](../../resources/v0.2-source-audit.md)
 - [resources/examples.json](../../resources/examples.json)

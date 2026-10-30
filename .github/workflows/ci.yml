@@ -9,4 +9,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m unittest discover -s tools -p 'test_*.py' -v
+      - run: python tools/check_examples.py
+      - run: python tools/check_v02_evals.py
       - run: python tools/verify_delivery.py

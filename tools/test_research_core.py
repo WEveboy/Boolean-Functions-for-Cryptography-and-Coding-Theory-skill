@@ -12,6 +12,9 @@ class ExactTests(unittest.TestCase):
             direct=[sum((-1)**(f[x]^c.parity(x&u)) for x in range(8)) for u in range(8)]
             self.assertEqual(s['walsh'],direct)
             self.assertEqual(s['nonlinearity'],min(sum(f[x]!=(c.parity(x&a)^b) for x in range(8)) for a in range(8) for b in (0,1)))
+            self.assertEqual(s['autocorrelation'],[sum((-1)**(f[x]^f[x^d]) for x in range(8)) for d in range(8)])
+            closest=s['closest_affine']
+            self.assertEqual(sum(f[x]!=(c.parity(closest['linear_mask']&x)^closest['constant']) for x in range(8)),s['nonlinearity'])
             self.assertEqual(c.anf(c.anf(f)),f)
             # Independent enumeration of every possible nonzero annihilator.
             best=4
@@ -40,6 +43,9 @@ class ExactTests(unittest.TestCase):
         self.assertEqual(r['differential_uniformity'],2)
         self.assertTrue(r['permutation'])
         self.assertEqual(r['nonlinearity'],2)
+        self.assertTrue(r['ab'])
+        witness=r['differential_witness']
+        self.assertEqual(len(witness['solutions']),r['differential_uniformity'])
         self.assertEqual(len(r['components']),7)
         self.assertTrue(all(sum(row)==8 for row in r['ddt']))
         # Every pair of balanced coordinates can hide a constant nonzero component.

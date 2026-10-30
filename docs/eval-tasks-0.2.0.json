@@ -1,0 +1,14 @@
+[
+  {"id":"bct-normal","prompt":"使用本技能计算GF(16)上逆函数（0映为0，模X^4+X+1）的BCT、boomerang均匀度和一个最大值解见证，实际运行并说明排除了哪些差分。"},
+  {"id":"bct-boundary","prompt":"n=2表[0,0,1,1]，请求逆函数定义的BCT，请实际尝试工具并说明处理结果。"},
+  {"id":"trace-normal","prompt":"求GF(8)、模X^3+X+1的完整迹表、多项式基对偶基，并实际核对基配对矩阵。"},
+  {"id":"trace-boundary","prompt":"请求field-trace，n=3，modulus=-11，请运行并说明是否接受。"},
+  {"id":"certificate-normal","prompt":"GF(8)上F=x^3，模X^3+X+1；G为F逆函数。使用输入/输出图块交换的给定CCZ证书验证两者，实际构造行掩码并运行。"},
+  {"id":"certificate-boundary","prompt":"对n=m=2，F=[0,1,2,3]，G=[1,0,3,2]，只提供恒等EA矩阵且offset全0。运行证书验证，并说明失败能否证明函数不等价。"},
+  {"id":"higher-normal","prompt":"对3变量f=x0*x1*x2计算精确二阶非线性度、最近ANF与实际枚举数。"},
+  {"id":"higher-boundary","prompt":"n=6，表只在x=63时取1，r=2，请运行高阶距离工具并报告是否超预算。"},
+  {"id":"code-normal","prompt":"F=[0,3,0,3]，n=m=2，include_constant=true，运行函数码工具，报告参数数、实际维数、重量分布、最小距离，并与向量NL比较。"},
+  {"id":"code-boundary","prompt":"n=m=2，F=[3,3,3,0]，include_constant=false，运行生成码工具并独立计算向量NL；说明本码最小距离能否强套d=NL。"},
+  {"id":"batch-normal","prompt":"实际运行一批3项任务：GF(4)迹(mod7)、2位恒等置换BCT、错误输入n3但只有2项标量表。给出逐项状态和成功/失败计数。"},
+  {"id":"batch-boundary","prompt":"实际尝试将batch嵌套在另一个batch中，请说明处理结果；另判断生日祝福是否应调用本技能。"}
+]

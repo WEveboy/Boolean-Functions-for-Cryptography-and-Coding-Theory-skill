@@ -1,6 +1,6 @@
 {
   "mode": "atomic",
   "validation": 0,
-  "files": 22,
+  "files": 29,
   "note": "single selected by maintainer to match reference project; compiler user_confirmed flag reflects explicit CLI mode, not separate human review of each stage"
 }

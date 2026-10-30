@@ -8,8 +8,10 @@ root=Path(__file__).resolve().parents[1]
 skill=root/'skills/carlet-boolean-research'
 assert (skill/'SKILL.md').is_file()
 assert (skill/'resources/research_core.py').read_bytes()==(root/'tools/research_core.py').read_bytes()
+assert (skill/'resources/research_extensions.py').read_bytes()==(root/'tools/research_extensions.py').read_bytes()
 cards=list((skill/'references/capabilities').glob('*.md'))
-assert len(cards)==13,len(cards)
+planned=json.loads((root/'books/carlet-2021/capability-plan.json').read_text(encoding='utf-8'))
+assert {f.stem for f in cards}=={x['slug'] for x in planned}
 for f in cards:
     t=f.read_text(encoding='utf-8')
     assert all(f'## {h}' in t for h in ('R —','I —','A1 —','A2 —','E —','B —')),f
@@ -27,4 +29,4 @@ manifest=root/'release-manifest.json'
 if manifest.exists():
     for p,digest in json.loads(manifest.read_text(encoding='utf-8'))['files'].items():
         assert hashlib.sha256((root/p).read_bytes()).hexdigest()==digest,p
-print('13 cards, resource consistency, local references, private-path checks and available manifest: PASS')
+print(f'{len(cards)} cards, resource consistency, local references, private-path checks and available manifest: PASS')
