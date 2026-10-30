@@ -1,0 +1,2 @@
+# Preserve the exact UTF-8 file bytes covered by release-manifest.json.
+* -text

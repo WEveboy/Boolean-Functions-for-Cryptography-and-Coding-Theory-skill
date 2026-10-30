@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 files=[]
-for name in ['README.md','AGENTS.md','LICENSE','.gitignore','source-manifest.json']:
+for name in ['README.md','AGENTS.md','LICENSE','.gitignore','.gitattributes','source-manifest.json']:
     files.append(root/name)
 for name in ['.github','docs','tools','examples','skills/carlet-boolean-research','books/carlet-2021']:
     for f in (root/name).rglob('*'):
@@ -21,7 +21,7 @@ manifest={'version':'0.1.0','hash_algorithm':'SHA256','files':{}}
 entries=[]
 for f in sorted(set(files)):
     rel=f.relative_to(root).as_posix()
-    content=f.read_text(encoding='utf-8')
+    content=f.read_bytes().decode('utf-8')
     if re.search(r'[A-Z]:[\\/](?:Users|Program Files)',content):
         raise ValueError('private path detected: '+rel)
     if f.suffix in ('.txt','.pdf'):
@@ -30,6 +30,7 @@ for f in sorted(set(files)):
     entries.append(dict(path=rel,mode='100644',type='blob',content=content))
 mf=root/'release-manifest.json'
 mf.write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
-entries.append(dict(path='release-manifest.json',mode='100644',type='blob',content=mf.read_text(encoding='utf-8')))
+entries.append(dict(path='release-manifest.json',mode='100644',type='blob',content=mf.read_bytes().decode('utf-8')))
+assert all(e['content'].encode('utf-8')==(root/e['path']).read_bytes() for e in entries)
 (root/'tmp/upload-tree.json').write_text(json.dumps(entries,ensure_ascii=False),encoding='utf-8')
 print(json.dumps({'files':len(entries),'text_bytes':sum(len(e['content'].encode()) for e in entries)}))
